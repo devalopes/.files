@@ -44,9 +44,9 @@ grr() {
 gx() {
     if git rev-parse --git-dir > /dev/null 2>&1
     then
-        git add --all
-        git commit -m "$1"
-        git push -v
+        git add -v --all
+        git commit -v -m "$1"
+        git push
     else
         echo "$PWD is not a git repository"
     fi

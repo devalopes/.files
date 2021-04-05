@@ -7,8 +7,8 @@ alias python="/opt/homebrew/bin/python3.9"
 
 # General
 alias ..="cd .."
-alias ls="ls -lG --color=auto"
-alias la="ls -la --color=auto"
+alias ls="ls -lG"
+alias la="ls -la"
 alias l="ls -lah"
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 alias untar="untar -xzvf"

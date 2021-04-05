@@ -3,10 +3,10 @@ alias vim="nvim"
 alias vi="nvim"
 
 # Languages
-alias python="/opt/homebrew/bin/python3.9";
+alias python="/opt/homebrew/bin/python3.9"
 
 # General
-alias ls="ls -lG";
+alias ls="ls -lG"
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 
 # Networking

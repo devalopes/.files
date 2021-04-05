@@ -12,3 +12,6 @@ oh-my-zsh custom functions
 
 ## init.vim
 nvim configuration
+
+## profile.zsh
+profile configurations to run on startup

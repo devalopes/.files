@@ -10,6 +10,8 @@ alias ls="ls -lG"
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 alias untar="untar -xzvf"
 alias trash="ls -laG ~/.Trash"
+alias rm="rm -i"
+alias mv="mv -i"
 
 # Networking
 alias head="curl -I"

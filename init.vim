@@ -42,3 +42,5 @@ nnoremap <leader>j <c-W>j
 nnoremap <leader>k <c-W>k
 nnoremap <leader>l <c-W>l
 
+tnoremap <Esc> <c-W>
+tnoremap <c-W>n <c-W>N

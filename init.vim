@@ -23,10 +23,22 @@ set mouse=a
 
 call plug#begin('~/.vim/plugged')
 Plug 'ayu-theme/ayu-vim'
-
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'mhinz/vim-startify'
+Plug 'mbbill/undotree'
 call plug#end()
 
 let ayucolor="mirage"
 colorscheme ayu
 
 let mapleader=" "
+nnoremap <leader>t :NERDTree<CR>
+nnoremap <leader>g :Git<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
+
+nnoremap <leader>h <c-W>h
+nnoremap <leader>j <c-W>j
+nnoremap <leader>k <c-W>k
+nnoremap <leader>l <c-W>l
+

@@ -1,8 +1,17 @@
+# Editors
 alias vim="nvim"
 alias vi="nvim"
+
+# Languages
 alias python="/opt/homebrew/bin/python3.9";
+
+# General
 alias ls="ls -lG";
-alias myip='curl https://ifconfig.me'
+alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
+
+# Networking
+alias head="curl -I"
+alias myip="curl https://ifconfig.me"
 
 # Find & Delete all ".DS_Store" files (recursive)
 alias delete.ds="find . -name '.DS_Store' -type f -print -delete"
@@ -16,6 +25,7 @@ alias gpush="git push -v"
 alias gpull="git pull -v"
 alias gs="git status"
 alias gcb="git checkout -b"
+alias gco="git checkout"
 alias gb="git branch"
 alias g="git"
 alias gcfg="git config --list"

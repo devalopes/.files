@@ -40,6 +40,18 @@ grr() {
     fi
 }
 
+# run a quick add,commit,push
+gx() {
+    if git rev-parse --git-dir > /dev/null 2>&1
+    then
+        git add --all
+        git commit -m "$1"
+        git push -v
+    else
+        echo "$PWD is not a git repository"
+    fi
+}
+
 # just a fun personal project to run a magic 8 ball 
 magic8() {
     python3 ~/projects/python/magic-8-ball/main.py

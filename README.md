@@ -1,6 +1,9 @@
 # dotfiles
 Hard links to my dotfiles
 
+## oh-my-zsh.zsh
+alias > oh-my-zsh.zsh dump
+
 ## aliases.zsh
 oh-my-zsh custom aliases
 

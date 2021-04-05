@@ -6,7 +6,10 @@ alias vi="nvim"
 alias python="/opt/homebrew/bin/python3.9"
 
 # General
-alias ls="ls -lG"
+alias ..="cd .."
+alias ls="ls -lG --color=auto"
+alias la="ls -la --color=auto"
+alias l="ls"
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 alias untar="untar -xzvf"
 alias trash="ls -laG ~/.Trash"

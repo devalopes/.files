@@ -13,6 +13,10 @@ run() {
     code .
 }
 
+del() {
+    mv -v "$1" ~/.Trash/$1
+}
+
 bye() {
     deactivate > /dev/null 2>&1
     cd ~/projects/

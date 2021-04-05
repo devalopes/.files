@@ -8,10 +8,14 @@ alias python="/opt/homebrew/bin/python3.9"
 # General
 alias ls="ls -lG"
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
+alias untar="untar -xzvf"
+alias trash="ls -laG ~/.Trash"
 
 # Networking
 alias head="curl -I"
 alias myip="curl https://ifconfig.me"
+alias localip="ipconfig getifaddr en0"
+alias ping="ping -c 5"
 
 # Find & Delete all ".DS_Store" files (recursive)
 alias delete.ds="find . -name '.DS_Store' -type f -print -delete"

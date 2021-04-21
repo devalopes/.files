@@ -20,6 +20,13 @@ set colorcolumn=80
 " set signcolumn=yes
 set termguicolors
 set mouse=a
+set backspace=indent,eol,start
+
+if has("gui_running")
+    set guioptions=-t
+    set guifont=Monospace\ 14
+    set lines=50 columns=200
+endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'ayu-theme/ayu-vim'
@@ -42,5 +49,5 @@ nnoremap <leader>j <c-W>j
 nnoremap <leader>k <c-W>k
 nnoremap <leader>l <c-W>l
 
-tnoremap <Esc> <c-W>
-tnoremap <c-W>n <c-W>N
+tnoremap <Esc> <C-w>
+tnoremap <C-w>n <C-w>N

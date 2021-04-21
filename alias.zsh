@@ -1,11 +1,12 @@
 # Editors
-alias vim="nvim"
 alias vi="nvim"
 
 # Languages
 alias python="/opt/homebrew/bin/python3.9"
 
 # General
+alias ~="cd ~"
+alias _="cd -"
 alias ..="cd .."
 alias ls="ls -lG"
 alias la="ls -la"
@@ -15,6 +16,7 @@ alias untar="untar -xzvf"
 alias trash="ls -laG ~/.Trash"
 alias rm="rm -i"
 alias mv="mv -i"
+alias r="clear"
 
 # Networking
 alias head="curl -I"
@@ -30,6 +32,7 @@ alias gaa="git add -v --all"
 alias ga="git add"
 alias gf="git fetch -v"
 alias gc="git commit -v -m"
+alias gpu="git push -u"
 alias gpush="git push -v"
 alias gpull="git pull -v"
 alias gs="git status"

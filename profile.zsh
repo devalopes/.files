@@ -17,4 +17,3 @@ export LANG=en_us.UTF-8
 #     figlet "Good evening"
 # fi
 
-ls

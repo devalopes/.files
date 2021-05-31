@@ -3,7 +3,7 @@ venv() {
     python"$1" -m virtualenv venv --always-copy
 }
 
-acitvate() {
+activate() {
     if [[ -f ".env" ]]
     then
         source .env

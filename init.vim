@@ -39,6 +39,7 @@ Plug 'mbbill/undotree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kevinhwang91/rnvimr'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -57,14 +58,17 @@ let g:tokyonight_style = "night"
 colorscheme tokyonight
 highlight ColorColumn guibg=black
 highlight CursorLine guibg=None
-highlight SignColumn guibg=None
+" highlight SignColumn guibg=None
 " highlight LineNr guibg=None guifg=Gray
 
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
-let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_special_files = [ 'README.md', 'Makefile', 'MAKEFILE' ] " List of filenames that gets highlighted with NvimTreeSpecialFile
-
+" let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
+" let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+" let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+" let g:nvim_tree_special_files = [ 'README.md', 'Makefile', 'MAKEFILE' ] " List of filenames that gets highlighted with NvimTreeSpecialFile
+" let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:rnvimr_enable_ex = 1 " Make Ranger replace Netrw and be the file explorer
+let g:rnvimr_hide_gitignore = 1 " Hide the files included in gitignore
+let g:rnvimr_enable_bw = 1 " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
 
 let mapleader=" "
 nnoremap q: <nop>
@@ -83,8 +87,9 @@ tnoremap <C-w>n <C-w>N
 
 nnoremap <leader>ft :FloatermToggle<CR>
 tnoremap <leader>ft <C-\><C-n>:FloatermToggle<CR>
-nnoremap <leader>tt :NvimTreeToggle<CR>
-nnoremap <leader>tr :NvimTreeRefresh<CR>
+" nnoremap <leader>tt :NvimTreeToggle<CR>
+" nnoremap <leader>tr :NvimTreeRefresh<CR>
+nnoremap <leader>tt :RnvimrToggle<CR>
 nnoremap <leader>g :Git<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>

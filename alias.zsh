@@ -1,8 +1,14 @@
 # Editors
 alias vi="nvim"
+alias vrc="nvim ~/.config/nvim/init.vim"
+alias dotilfes="nvim ~/projects/dotfiles/"
+
+# Other
+alias htop-me="htop -u alex"
 
 # Languages
 alias python="/opt/homebrew/bin/python3.9"
+alias init="touch __init__.py"
 
 # General
 alias ~="cd ~"
@@ -29,10 +35,12 @@ alias delete.ds="find . -name '.DS_Store' -type f -print -delete"
 
 # Git aliases
 alias gaa="git add -v --all"
+alias gap="git add --patch"
 alias ga="git add"
 alias gf="git fetch -v"
 alias gc="git commit -v -m"
 alias gpu="git push -u"
+alias gp="git push -v"
 alias gpush="git push -v"
 alias gpull="git pull -v"
 alias gs="git status"

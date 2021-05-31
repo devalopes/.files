@@ -1,5 +1,5 @@
 # Make a virtual environment in any python version
-venv() { 
+venv() {
     python"$1" -m virtualenv venv --always-copy
 }
 
@@ -18,7 +18,7 @@ acitvate() {
 # Basic sourcing of .env, activate venv, and launching vscode
 run() {
     activate
-    code .
+    vi .
 }
 
 # del is safer than rm since it's just moving to trash can
@@ -93,7 +93,16 @@ gnew() {
     fi
 }
 
-# just a fun personal project to run a magic 8 ball 
+ginit() {
+    it init -b main
+    git add -v --all
+    git commit -m "initial commit"
+    git remote add origin github:devalopes/"$1"
+    git remote -v
+    git push -u origin main
+}
+
+# just a fun personal project to run a magic 8 ball
 magic8() {
     python3 ~/projects/python/magic-8-ball/main.py
 }

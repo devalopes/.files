@@ -5,3 +5,5 @@ export EDITOR=nvim
 export PORT=8080
 export LANG=en_us.UTF-8
 
+set -o vi
+

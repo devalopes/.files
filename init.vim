@@ -56,8 +56,8 @@ call plug#end()
 set termguicolors
 let g:tokyonight_style = "night"
 colorscheme tokyonight
-highlight ColorColumn guibg=black
-highlight CursorLine guibg=None
+" highlight ColorColumn guibg=black
+" highlight CursorLine guibg=None
 " highlight SignColumn guibg=None
 " highlight LineNr guibg=None guifg=Gray
 
@@ -89,7 +89,7 @@ nnoremap <leader>ft :FloatermToggle<CR>
 tnoremap <leader>ft <C-\><C-n>:FloatermToggle<CR>
 " nnoremap <leader>tt :NvimTreeToggle<CR>
 " nnoremap <leader>tr :NvimTreeRefresh<CR>
-nnoremap <leader>tt :RnvimrToggle<CR>
+nnoremap <leader>t :RnvimrToggle<CR>
 nnoremap <leader>g :Git<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -149,21 +149,22 @@ local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<space>', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<space>v', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<space>d', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.sp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+--  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+--  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.sp.buf.remove_workspace_folder()<CR>', opts)
+--  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>x', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+--  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>s', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap('n', 'grc', '<cmd>ccl<CR>', opts)
+  buf_set_keymap('n', '<space>w', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+--  buf_set_keymap('n', '<space>cp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+--  buf_set_keymap('n', '<space>cn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>c', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap("n", "<space>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =

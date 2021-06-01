@@ -1,7 +1,7 @@
 # Editors
 alias vi="nvim"
 alias vrc="nvim ~/.config/nvim/init.vim"
-alias dotfiles="nvim ~/projects/dotfiles/"
+alias dotfiles="nvim ~/dotfiles"
 
 # Other
 alias htop-me="htop -u alex"

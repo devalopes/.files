@@ -16,9 +16,9 @@ activate() {
 }
 
 # Basic sourcing of .env, activate venv, and launching vscode
-run() {
+code() {
     activate
-    vi .
+    vi
 }
 
 # del is safer than rm since it's just moving to trash can

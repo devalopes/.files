@@ -69,13 +69,6 @@ highlight Normal guibg=None
 let g:rnvimr_enable_ex = 1 " Make Ranger replace Netrw and be the file explorer
 let g:rnvimr_hide_gitignore = 1 " Hide the files included in gitignore
 let g:rnvimr_enable_bw = 1 " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-" let g:rnvimr_action = {
-"             \ '<C-t>': 'NvimEdit tabedit',
-"             \ '<C-x>': 'NvimEdit split',
-"             \ '<C-v>': 'NvimEdit vsplit',
-"             \ 'gw': 'JumpNvimCwd',
-"             \ 'yw': 'EmitRangerCwd'
-"             \ }
 
 let mapleader=" "
 nnoremap q: <nop>
@@ -116,10 +109,6 @@ lua <<EOF
 -- Testing
 require('which-key').setup{}
 --Testing
-
-require'nvim-web-devicons'.setup{
-default = true;
-}
 
 require('lualine').setup {
   options = {

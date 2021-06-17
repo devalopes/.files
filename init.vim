@@ -33,17 +33,15 @@ set wildignore+=**/.git/*
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/tokyonight.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kevinhwang91/rnvimr'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'
@@ -57,6 +55,7 @@ call plug#end()
 set termguicolors
 let g:tokyonight_style = "night"
 colorscheme tokyonight
+highlight Normal guibg=None
 " highlight ColorColumn guibg=black
 " highlight CursorLine guibg=None
 " highlight SignColumn guibg=None
@@ -70,14 +69,17 @@ colorscheme tokyonight
 let g:rnvimr_enable_ex = 1 " Make Ranger replace Netrw and be the file explorer
 let g:rnvimr_hide_gitignore = 1 " Hide the files included in gitignore
 let g:rnvimr_enable_bw = 1 " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+" let g:rnvimr_action = {
+"             \ '<C-t>': 'NvimEdit tabedit',
+"             \ '<C-x>': 'NvimEdit split',
+"             \ '<C-v>': 'NvimEdit vsplit',
+"             \ 'gw': 'JumpNvimCwd',
+"             \ 'yw': 'EmitRangerCwd'
+"             \ }
 
 let mapleader=" "
 nnoremap q: <nop>
 nnoremap Q <nop>
-nnoremap <leader>h <C-w>h<CR>
-nnoremap <leader>j <C-w>j<CR>
-nnoremap <leader>k <C-w>k<CR>
-nnoremap <leader>l <C-w>l<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
@@ -114,6 +116,10 @@ lua <<EOF
 -- Testing
 require('which-key').setup{}
 --Testing
+
+require'nvim-web-devicons'.setup{
+default = true;
+}
 
 require('lualine').setup {
   options = {

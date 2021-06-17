@@ -7,22 +7,22 @@ alias dotfiles="nvim ~/dotfiles"
 alias htop-me="htop -u alex"
 
 # Languages
-alias python="/opt/homebrew/bin/python3.9"
 alias init="touch __init__.py"
 
 # General
 alias ~="cd ~"
 alias _="cd -"
 alias ..="cd .."
-alias ls="ls -lG"
-alias la="ls -la"
-alias l="ls -lah"
+alias ls="ls -lG --color=auto"
+alias la="ls -la --color=auto"
+alias l="ls -lah --color=auto"
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 alias untar="tar -xzvf"
-alias trash="ls -laG ~/.Trash"
+alias trash="ls -laG --color=auto ~/.Trash"
 alias rm="rm -i"
 alias mv="mv -i"
-alias r="clear"
+alias c="clear"
+alias r=". ranger"
 
 # Networking
 alias head="curl -I"

@@ -35,28 +35,33 @@ Plug 'mhinz/vim-startify'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'folke/tokyonight.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'TimUntersberger/neogit'
 Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kevinhwang91/rnvimr'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'windwp/nvim-autopairs'
+Plug '907th/vim-auto-save'
+Plug 'onsails/lspkind-nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'folke/which-key.nvim'
 
 " Testing
-Plug 'folke/which-key.nvim'
 call plug#end()
 
 set termguicolors
 let g:tokyonight_style = "night"
 colorscheme tokyonight
+highlight Normal guibg=None
 " highlight ColorColumn guibg=black
 " highlight CursorLine guibg=None
 " highlight SignColumn guibg=None
@@ -70,6 +75,12 @@ colorscheme tokyonight
 let g:rnvimr_enable_ex = 1 " Make Ranger replace Netrw and be the file explorer
 let g:rnvimr_hide_gitignore = 1 " Hide the files included in gitignore
 let g:rnvimr_enable_bw = 1 " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+
+
+" Testing
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_silent = 1  " do not display the auto-save notification
+
 
 let mapleader=" "
 nnoremap q: <nop>
@@ -91,7 +102,7 @@ tnoremap <leader>ft <C-\><C-n>:FloatermToggle<CR>
 " nnoremap <leader>tt :NvimTreeToggle<CR>
 " nnoremap <leader>tr :NvimTreeRefresh<CR>
 nnoremap <leader>t :RnvimrToggle<CR>
-nnoremap <leader>g :Git<CR>
+nnoremap <leader>g :Neogit<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -107,12 +118,64 @@ augroup remove_whitespace
     autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
-autocmd BufEnter * lua require'completion'.on_attach()
+" autocmd BufEnter * lua require'completion'.on_attach()
 
 lua <<EOF
 
 -- Testing
-require('which-key').setup{}
+require("bufferline").setup{}
+require('nvim-autopairs').setup()
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  resolve_timeout = 800;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = true;
+  };
+}
+
+require('lspkind').init({
+    with_text = true,
+    preset = 'default',
+    symbol_map = {
+      Text = '',
+      Method = 'ƒ',
+      Function = '',
+      Constructor = '',
+      Variable = '',
+      Class = '',
+      Interface = 'ﰮ',
+      Module = '',
+      Property = '',
+      Unit = '',
+      Value = '',
+      Enum = '了',
+      Keyword = '',
+      Snippet = '﬌',
+      Color = '',
+      File = '',
+      Folder = '',
+      EnumMember = '',
+      Constant = '',
+      Struct = ''
+    },
+})
 --Testing
 
 require('lualine').setup {
@@ -122,6 +185,7 @@ require('lualine').setup {
 }
 
 require('gitsigns').setup()
+require('which-key').setup{}
 
 require'nvim-treesitter.configs'.setup {
     highlight = {

@@ -33,7 +33,6 @@ set wildignore+=**/.git/*
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/tokyonight.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'TimUntersberger/neogit'
@@ -41,8 +40,10 @@ Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kevinhwang91/rnvimr'
+" Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug '907th/vim-auto-save'
@@ -53,6 +54,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'folke/which-key.nvim'
+
+Plug 'ray-x/lsp_signature.nvim'
 
 " Testing
 call plug#end()
@@ -81,6 +84,7 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_silent = 1  " do not display the auto-save notification
 
 
+
 let mapleader=" "
 nnoremap q: <nop>
 nnoremap Q <nop>
@@ -94,9 +98,8 @@ tnoremap <C-w>n <C-w>N
 
 nnoremap <leader>ft :FloatermToggle<CR>
 tnoremap <leader>ft <C-\><C-n>:FloatermToggle<CR>
-" nnoremap <leader>tt :NvimTreeToggle<CR>
-" nnoremap <leader>tr :NvimTreeRefresh<CR>
 nnoremap <leader>t :RnvimrToggle<CR>
+nnoremap <silent> gb :BufferLinePick<CR>
 nnoremap <leader>g :Neogit<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -171,6 +174,37 @@ require('lspkind').init({
       Struct = ''
     },
 })
+
+require'lsp_signature'.on_attach(
+    {
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+                   -- If you want to hook lspsaga or other signature handler, pls set to false
+      doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+                     -- set to 0 if you DO NOT want any API comments be shown
+                     -- This setting only take effect in insert mode, it does not affect signature help in normal
+                     -- mode, 10 by default
+
+      floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
+      fix_pos = true,  -- set to true, the floating window will not auto-close until finish all parameters
+      hint_enable = true, -- virtual hint enable
+      --hint_prefix = "🔎 ",  -- Panda for parameter
+      hint_prefix = "",
+      hint_scheme = "String",
+      use_lspsaga = false,  -- set to true if you want to use lspsaga popup
+      hi_parameter = "Search", -- how your parameter will be highlight
+      max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
+                       -- to view the hiding contents
+      max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+      handler_opts = {
+        border = "single"   -- double, single, shadow, none
+      },
+      extra_trigger_chars = {} -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
+      -- deprecate !!
+      -- decorator = {"`", "`"}  -- this is no longer needed as nvim give me a handler and it allow me to highlight active parameter in floating_window
+
+    }
+)
+
 --Testing
 
 require('lualine').setup {

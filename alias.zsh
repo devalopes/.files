@@ -23,6 +23,7 @@ alias rm="rm -i"
 alias mv="mv -i"
 alias c="clear"
 alias r=". ranger"
+alias q="exit"
 
 # Networking
 alias head="curl -I"

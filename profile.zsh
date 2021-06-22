@@ -3,8 +3,6 @@
 export TMPDIR=~/.tmp/
 export EDITOR=nvim
 export VISUAL=nvim
-export PORT=8080
-export LANG=en_us.UTF-8
+export HIGHLIGHT_STYLE=moria
 
 set -o vi
-

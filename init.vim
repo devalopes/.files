@@ -33,6 +33,7 @@ set wildignore+=**/.git/*
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/tokyonight.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'TimUntersberger/neogit'
@@ -40,10 +41,8 @@ Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kevinhwang91/rnvimr'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug '907th/vim-auto-save'
@@ -85,10 +84,6 @@ let g:auto_save_silent = 1  " do not display the auto-save notification
 let mapleader=" "
 nnoremap q: <nop>
 nnoremap Q <nop>
-nnoremap <leader>h <C-w>h<CR>
-nnoremap <leader>j <C-w>j<CR>
-nnoremap <leader>k <C-w>k<CR>
-nnoremap <leader>l <C-w>l<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>

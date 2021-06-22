@@ -1,4 +1,3 @@
-set path+=**
 syntax on
 
 set nu
@@ -25,6 +24,8 @@ set mouse=a
 set backspace=indent,eol,start
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
+set noshowcmd
+set noruler
 
 set wildignore+=*.pyc
 set wildignore+=**/node_modules/*
@@ -41,7 +42,6 @@ Plug 'mbbill/undotree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kevinhwang91/rnvimr'
 " Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
@@ -99,7 +99,6 @@ tnoremap <C-w>n <C-w>N
 nnoremap <leader>ft :FloatermToggle<CR>
 tnoremap <leader>ft <C-\><C-n>:FloatermToggle<CR>
 nnoremap <leader>t :RnvimrToggle<CR>
-nnoremap <silent> gb :BufferLinePick<CR>
 nnoremap <leader>g :Neogit<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -116,12 +115,9 @@ augroup remove_whitespace
     autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
-" autocmd BufEnter * lua require'completion'.on_attach()
-
 lua <<EOF
 
 -- Testing
-require("bufferline").setup{}
 require('nvim-autopairs').setup()
 require'compe'.setup {
   enabled = true;

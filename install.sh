@@ -32,11 +32,10 @@ install_success() {
 	echo -e ${GREEN}$1 config installed successfully${NC}
 }
 
-
-copy() {
-	DIR="$(dirname $2)"
-	mkdir -pv "${DIR}" && cp -fv $SCRIPT_DIR/$1 $2
-}
+# copy() {
+# 	DIR="$(dirname $2)"
+# 	mkdir -pv "${DIR}" && cp -fv $SCRIPT_DIR/$1 $2
+# }
 
 link() {
 	DIR="$(dirname $2)"

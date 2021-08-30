@@ -43,7 +43,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kevinhwang91/rnvimr'
-" Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug '907th/vim-auto-save'
@@ -54,10 +53,10 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'folke/which-key.nvim'
-
 Plug 'ray-x/lsp_signature.nvim'
 
-" Testing
+" Test plugins
+
 call plug#end()
 
 set termguicolors
@@ -69,20 +68,11 @@ highlight Normal guibg=None
 " highlight SignColumn guibg=None
 " highlight LineNr guibg=None guifg=Gray
 
-" let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
-" let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
-" let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-" let g:nvim_tree_special_files = [ 'README.md', 'Makefile', 'MAKEFILE' ] " List of filenames that gets highlighted with NvimTreeSpecialFile
-" let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
 let g:rnvimr_enable_ex = 1 " Make Ranger replace Netrw and be the file explorer
 let g:rnvimr_hide_gitignore = 1 " Hide the files included in gitignore
 let g:rnvimr_enable_bw = 1 " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-
-
-" Testing
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_silent = 1  " do not display the auto-save notification
-
 
 
 let mapleader=" "
@@ -117,7 +107,6 @@ augroup END
 
 lua <<EOF
 
--- Testing
 require('nvim-autopairs').setup()
 require'compe'.setup {
   enabled = true;
@@ -200,8 +189,6 @@ require'lsp_signature'.on_attach(
 
     }
 )
-
---Testing
 
 require('lualine').setup {
   options = {

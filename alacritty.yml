@@ -7,7 +7,7 @@ font:
     family: Fira Code Nerd Font
     style: Bold
 
-  size: 11
+  size: 12
 
 background_opacity: .9
 decorations: buttonless

@@ -6,3 +6,4 @@ export VISUAL=nvim
 export HIGHLIGHT_STYLE=moria
 
 set -o vi
+

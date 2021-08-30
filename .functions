@@ -26,11 +26,15 @@ del() {
     mv -vf "$1" ~/.Trash/$1
 }
 
+cl() {
+    cd "$@" && ls;
+}
+
 # deactivate a virtualenv, cd back to projects directory
 bye() {
     deactivate > /dev/null 2>&1
     cd ~/projects/
-    ls -l
+    ls -l --color=auto
 }
 
 empty_trash_30_days() {

@@ -117,9 +117,21 @@ functions() {
 }
 
 
+gitconfig() {
+    link .gitconfig $HOME/.gitconfig
+	install_success gitconfig
+}
+
+bashrc() {
+    link .bashrc $HOME/.bashrc
+    install_success bashrc
+}
+
 install alacritty
 install neovim
 install ranger
-install profile
 install aliases
 install functions
+install profile
+install bashrc
+install gitconfig

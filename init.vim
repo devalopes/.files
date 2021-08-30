@@ -34,7 +34,7 @@ set wildignore+=**/.git/*
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'folke/tokyonight.nvim'
+Plug 'EdenEast/nightfox.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'TimUntersberger/neogit'
 Plug 'tpope/vim-commentary'
@@ -60,8 +60,7 @@ Plug 'ray-x/lsp_signature.nvim'
 call plug#end()
 
 set termguicolors
-let g:tokyonight_style = "night"
-colorscheme tokyonight
+colorscheme nightfox
 highlight Normal guibg=None
 " highlight ColorColumn guibg=black
 " highlight CursorLine guibg=None
@@ -192,7 +191,7 @@ require'lsp_signature'.on_attach(
 
 require('lualine').setup {
   options = {
-    theme = 'tokyonight'
+    theme = 'nightfox'
   }
 }
 

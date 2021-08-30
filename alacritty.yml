@@ -14,7 +14,7 @@ decorations: buttonless
 window:
   dimensions:
     columns: 125
-    lines: 4
+    lines: 45
 
 colors:
   # Default colors

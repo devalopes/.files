@@ -26,6 +26,13 @@ function set_prompt() {
   cyan=$(tput setaf 6)
   white=$(tput setaf 7)
   reset=$(tput sgr0)
-  export PS1='\[$cyan\]\u\[$reset\]\[$magenta\]@\[$reset\]\[$cyan\]\h\[$reset\]\[$magenta\]:\[$reset\]\[$blue\]\w\[$reset\]\[$green\]$(__git_ps1)\[$reset\]\[$magenta\]$\[$reset\] '
+  if [[ $EUID -eq 0 ]]
+  then
+     PS1='\[$red\]\u\[$reset\]'
+  else
+     PS1='\[$cyan\]\u\[$reset\]'
+  fi
+  PS1+='\[$magenta\]@\[$reset\]\[$cyan\]\h\[$reset\]\[$magenta\]:\[$reset\]\[$blue\]\w\[$reset\]\[$green\]$(__git_ps1)\[$reset\]\[$magenta\]$\[$reset\] '
+  export PS1
 }
 set_prompt

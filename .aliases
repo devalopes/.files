@@ -10,6 +10,7 @@ alias htop-me="htop -u ${USER}"
 alias init="touch __init__.py"
 
 # General
+alias su="sudo -Es"
 alias ~="cd ~"
 alias _="cd -"
 alias ..="cd .."

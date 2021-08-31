@@ -32,7 +32,7 @@ function set_prompt() {
   else
      PS1='\[$cyan\]\u\[$reset\]'
   fi
-  PS1+='\[$magenta\]@\[$reset\]\[$cyan\]\h\[$reset\]\[$magenta\]:\[$reset\]\[$blue\]\w\[$reset\]\[$green\]$(__git_ps1)\[$reset\]\[$magenta\]$\[$reset\] '
+  PS1+='\[$magenta\]@\[$reset\]\[$cyan\]\h\[$reset\]\[$magenta\]:\[$reset\]\[$blue\]\W\[$reset\]\[$green\]$(__git_ps1)\[$reset\]\[$magenta\]$\[$reset\] '
   export PS1
 }
 set_prompt

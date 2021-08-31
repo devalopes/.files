@@ -27,6 +27,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set noshowcmd
 set noruler
+set clipboard+=unnamedplus
 
 set wildignore+=*.pyc
 set wildignore+=**/node_modules/*

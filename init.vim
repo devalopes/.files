@@ -35,7 +35,8 @@ set wildignore+=**/.git/*
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'folke/tokyonight.nvim'
+Plug 'navarasu/onedark.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'tpope/vim-fugitive'
 Plug 'TimUntersberger/neogit'
 Plug 'tpope/vim-commentary'
@@ -64,9 +65,11 @@ Plug 'rafamadriz/friendly-snippets'
 call plug#end()
 
 set termguicolors
-let g:tokyonight_style = "night"
-colorscheme tokyonight
-highlight Normal guibg=None
+let g:onedark_transparent_background = 1
+let g:onedark_disable_toggle_style = 1
+let g:onedark_Style='darker'
+colorscheme onedark
+" highlight Normal guibg=None
 " highlight ColorColumn guibg=black
 " highlight CursorLine guibg=None
 " highlight SignColumn guibg=None
@@ -117,6 +120,7 @@ require("indent_blankline").setup {
     buftype_exclude = {"terminal"},
     -- show_current_context = true,
 }
+require("colorizer").setup{}
 -- End Testing --
 
 require('nvim-autopairs').setup()
@@ -213,7 +217,7 @@ require'lsp_signature'.on_attach(
 
 require('lualine').setup {
   options = {
-    theme = 'tokyonight'
+    theme = 'onedark'
   }
 }
 

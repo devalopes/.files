@@ -45,10 +45,11 @@ link() {
 
 ########################### Installation Functions ############################
 
-alacritty() {
-	exists alacritty
-	link alacritty.yml $HOME/.config/alacritty/alacritty.yml
-	install_success alacritty
+kitty() {
+	exists kitty
+	link kitty.conf $HOME/.config/kitty/kitty.conf
+    link kitty-theme.conf $HOME/.config/kitty/theme.conf
+	install_success kitty
 }
 
 
@@ -128,7 +129,7 @@ bashrc() {
     install_success bashrc
 }
 
-install alacritty
+install kitty
 install neovim
 install ranger
 install aliases

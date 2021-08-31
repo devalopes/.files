@@ -62,6 +62,7 @@ neovim() {
 	fi
 	link init.vim $HOME/.config/nvim/init.vim
     # language server for python
+    exists npm
     npm list -g pyright | grep "pyright" || sudo npm install --global pyright
     # language server for rust
     if [[ ! -f $HOME/.local/bin/rust-analyzer ]]
@@ -70,6 +71,7 @@ neovim() {
         curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.local/bin/rust-analyzer
         chmod +x $HOME/.local/bin/rust-analyzer
     fi
+    nvim +PlugInstall +qa  # Silently execute PlugInstall
 	install_success neovim
 }
 

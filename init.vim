@@ -113,7 +113,7 @@ lua <<EOF
 
 -- Testing --
 require("indent_blankline").setup {
-    char = '|',
+    char = '│',
     buftype_exclude = {"terminal"},
     -- show_current_context = true,
 }

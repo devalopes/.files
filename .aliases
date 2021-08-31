@@ -9,7 +9,6 @@ alias htop-me="htop -u ${USER}"
 # Languages
 alias init="touch __init__.py"
 
-
 # General
 alias ~="cd ~"
 alias _="cd -"

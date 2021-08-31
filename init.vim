@@ -71,7 +71,7 @@ let g:onedark_Style='darker'
 colorscheme onedark
 " highlight Normal guibg=None
 " highlight ColorColumn guibg=black
-" highlight CursorLine guibg=None
+highlight CursorLine guibg=None
 " highlight SignColumn guibg=None
 " highlight LineNr guibg=None guifg=Gray
 

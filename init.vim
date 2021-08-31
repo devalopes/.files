@@ -10,6 +10,7 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set ignorecase
+set smartcase
 set noshowmode
 set nowrap
 set noswapfile
@@ -56,6 +57,9 @@ Plug 'folke/which-key.nvim'
 Plug 'ray-x/lsp_signature.nvim'
 
 " Test plugins
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
 
 call plug#end()
 
@@ -73,7 +77,6 @@ let g:rnvimr_hide_gitignore = 1 " Hide the files included in gitignore
 let g:rnvimr_enable_bw = 1 " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_silent = 1  " do not display the auto-save notification
-
 
 let mapleader=" "
 nnoremap q: <nop>
@@ -99,6 +102,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+inoremap <silent><expr> <CR> compe#confirm('<CR>')
 
 augroup remove_whitespace
     autocmd!
@@ -106,6 +110,13 @@ augroup remove_whitespace
 augroup END
 
 lua <<EOF
+
+-- Testing --
+require("indent_blankline").setup {
+    char = "|",
+    buftype_exclude = {"terminal"}
+}
+-- End Testing --
 
 require('nvim-autopairs').setup()
 require'compe'.setup {
@@ -121,7 +132,14 @@ require'compe'.setup {
   max_abbr_width = 100;
   max_kind_width = 100;
   max_menu_width = 100;
-  documentation = true;
+  documentation = {
+    border = 'solid',
+    winhighlight = 'NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder',
+    max_width = 120,
+    min_width = 60,
+    max_height = math.floor(vim.o.lines * 0.3),
+    min_height = 1,
+  };
   source = {
     path = true;
     buffer = true;
@@ -130,6 +148,8 @@ require'compe'.setup {
     nvim_lua = true;
     vsnip = true;
     ultisnips = true;
+    luasnip = true;
+    emoji = true;
   };
 }
 

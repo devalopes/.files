@@ -80,16 +80,30 @@ let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:indentLine_fileTypeExclude = ['dashboard']
 let g:dashboard_disable_statusline = 1
 let g:dashboard_default_executive ='telescope'
-let g:dashboard_custom_shortcut={
-\ 'last_session'       : 'SPC s l',
-\ 'find_history'       : 'SPC f o',
-\ 'find_file'          : 'SPC f f',
-\ 'new_file'           : 'SPC c n',
-\ 'change_colorscheme' : 'SPC c c',
-\ 'find_word'          : 'SPC f g',
-\ 'book_marks'         : 'SPC f b',
-\ 'Edit config'        : 'SPC vrc',
-\ }
+
+let g:dashboard_custom_section={
+  \ 'saved_session': {
+      \ 'description': [' Last save point                 SPC s l '],
+      \ 'command': 'SessionLoad' },
+  \ 'history': {
+      \ 'description': ['⌚History                         SPC f o '],
+      \ 'command': 'Telescope oldfiles' },
+  \ 'find_file': {
+      \ 'description': [' Find File                       SPC f f '],
+      \ 'command': 'Telescope find_files' },
+  \ 'find_hidden': {
+      \ 'description': ['👓Find Hidden                     SPC f m '],
+      \ 'command': 'Telescope find_files hidden=true' },
+  \ 'find_word': {
+      \ 'description': [' Live Grep                       SPC f g '],
+      \ 'command': 'Telescope live_grep' },
+  \ 'new_file': {
+      \ 'description': [' New File                        SPC c n '],
+      \ 'command': 'DashboardNewFile' },
+  \ 'edit_config': {
+      \ 'description': ['🌎Edit nvim                       SPC v r c'],
+      \ 'command': ':e ~/.config/nvim/init.vim' }
+  \ }
 
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__', 'venv' ]
 let g:nvim_tree_gitignore = 1

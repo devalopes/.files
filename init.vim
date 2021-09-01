@@ -1,5 +1,3 @@
-syntax on
-
 set nu
 set cursorline
 set nohlsearch
@@ -15,7 +13,6 @@ set noshowmode
 set nowrap
 set noswapfile
 set nobackup
-set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set scrolloff=10
@@ -68,7 +65,7 @@ call plug#end()
 set termguicolors
 let g:onedark_transparent_background = 1
 let g:onedark_disable_toggle_style = 1
-let g:onedark_Style='darker'
+let g:onedark_style='darker'
 colorscheme onedark
 " highlight Normal guibg=None
 " highlight ColorColumn guibg=black
@@ -153,8 +150,6 @@ require'compe'.setup {
     nvim_lsp = true;
     nvim_lua = true;
     vsnip = true;
-    ultisnips = true;
-    luasnip = true;
     emoji = true;
   };
 }
@@ -162,42 +157,19 @@ require'compe'.setup {
 require('lspkind').init({
     with_text = true,
     preset = 'default',
-    symbol_map = {
-      Text = '',
-      Method = 'ƒ',
-      Function = '',
-      Constructor = '',
-      Variable = '',
-      Class = '',
-      Interface = 'ﰮ',
-      Module = '',
-      Property = '',
-      Unit = '',
-      Value = '',
-      Enum = '了',
-      Keyword = '',
-      Snippet = '﬌',
-      Color = '',
-      File = '',
-      Folder = '',
-      EnumMember = '',
-      Constant = '',
-      Struct = ''
-    },
 })
 
 require'lsp_signature'.on_attach(
     {
       bind = true, -- This is mandatory, otherwise border config won't get registered.
                    -- If you want to hook lspsaga or other signature handler, pls set to false
-      doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+      doc_lines = 10, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
                      -- set to 0 if you DO NOT want any API comments be shown
                      -- This setting only take effect in insert mode, it does not affect signature help in normal
                      -- mode, 10 by default
-
-      floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
-      fix_pos = true,  -- set to true, the floating window will not auto-close until finish all parameters
-      hint_enable = true, -- virtual hint enable
+      floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+      fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
+      hint_enable = false, -- virtual hint enable
       --hint_prefix = "🔎 ",  -- Panda for parameter
       hint_prefix = "",
       hint_scheme = "String",
@@ -209,25 +181,28 @@ require'lsp_signature'.on_attach(
       handler_opts = {
         border = "single"   -- double, single, shadow, none
       },
-      extra_trigger_chars = {} -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
-      -- deprecate !!
-      -- decorator = {"`", "`"}  -- this is no longer needed as nvim give me a handler and it allow me to highlight active parameter in floating_window
-
     }
 )
 
 require('lualine').setup {
   options = {
-    theme = 'onedark'
+    theme = 'onedark',
+    icons_enabled = true,
   }
 }
 
 require('gitsigns').setup()
-require('which-key').setup{}
+require('which-key').setup{
+    window =  {
+        border = "single"
+    }
+}
 
 require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",
     highlight = {
         enable = true,
+        additional_vim_regex_highlighting = false,
     },
     indent = {
         enable = true,
@@ -265,7 +240,7 @@ local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   buf_set_keymap('n', 'grp', '<cmd>cp<CR>', opts)
   buf_set_keymap('n', 'grn', '<cmd>cn<CR>', opts)
   buf_set_keymap('n', 'grc', '<cmd>ccl<CR>', opts)
-  buf_set_keymap('n', '<space>s', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<space>s', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border="single"})<CR>', opts)
 --  buf_set_keymap('n', '<space>cp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 --  buf_set_keymap('n', '<space>cn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>cc', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -279,6 +254,28 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         signs = true,
         update_in_insert = false
     })
+-- Add borders
+vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {
+    border = "single"
+  }
+)
+vim.lsp.handlers["textDocument/signatureHelp"] =
+  vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {
+    border = "single"
+  }
+)
+
+-- Change diagnostic symbols in gutter
+local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+for type, icon in pairs(signs) do
+  local hl = "LspDiagnosticsSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches

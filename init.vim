@@ -31,7 +31,7 @@ set wildignore+=**/node_modules/*
 set wildignore+=**/.git/*
 
 call plug#begin('~/.vim/plugged')
-Plug 'mhinz/vim-startify'
+Plug 'glepnir/dashboard-nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -42,7 +42,7 @@ Plug 'mbbill/undotree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kevinhwang91/rnvimr'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug '907th/vim-auto-save'
@@ -74,11 +74,62 @@ highlight CursorLine guibg=None
 " highlight SignColumn guibg=None
 " highlight LineNr guibg=None guifg=Gray
 
-let g:rnvimr_enable_ex = 1 " Make Ranger replace Netrw and be the file explorer
-let g:rnvimr_hide_gitignore = 1 " Hide the files included in gitignore
-let g:rnvimr_enable_bw = 1 " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_silent = 1  " do not display the auto-save notification
+
+let g:indentLine_fileTypeExclude = ['dashboard']
+let g:dashboard_default_executive ='telescope'
+let g:dashboard_custom_shortcut={
+\ 'last_session'       : 'SPC s l',
+\ 'find_history'       : 'SPC f h',
+\ 'find_file'          : 'SPC f f',
+\ 'new_file'           : 'SPC c n',
+\ 'change_colorscheme' : 'SPC t c',
+\ 'find_word'          : 'SPC f g',
+\ 'book_marks'         : 'SPC f b',
+\ }
+
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__', 'venv' ]
+let g:nvim_tree_gitignore = 1
+let g:nvim_tree_auto_close = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_special_files = {}
+let g:nvim_tree_window_picker_exclude = {
+    \   'buftype': [
+    \     'terminal'
+    \   ]
+    \ }
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   },
+    \   'lsp': {
+    \     'hint': "",
+    \     'info': "",
+    \     'warning': "",
+    \     'error': "",
+    \   }
+    \ }
+
+
 
 let mapleader=" "
 nnoremap q: <nop>
@@ -93,7 +144,7 @@ tnoremap <C-w>n <C-w>N
 
 nnoremap <leader>ft :FloatermToggle<CR>
 tnoremap <leader>ft <C-\><C-n>:FloatermToggle<CR>
-nnoremap <leader>t :RnvimrToggle<CR>
+nnoremap <leader>t :NvimTreeToggle<CR>
 nnoremap <leader>g :Neogit<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -103,6 +154,12 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Dashboard save/reload
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
 
 " Confirms snippet selection currently
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
@@ -117,7 +174,7 @@ lua <<EOF
 -- Testing --
 require("indent_blankline").setup {
     char = '│',
-    buftype_exclude = {"terminal"},
+    buftype_exclude = {"terminal", "nofile"},
     -- show_current_context = true,
 }
 require("colorizer").setup{}
@@ -288,3 +345,35 @@ end
 -- LSP --
 
 EOF
+
+" Dashboard headers
+" let g:dashboard_custom_header =<< trim END
+" =================     ===============     ===============   ========  ========
+" \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
+" ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||
+" || . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . ||
+" ||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .||
+" || . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . ||
+" ||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\_ . .|. .||
+" || . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . ||
+" ||_-' ||  .|/    || ||    \|.  || `-_|| ||_-' ||  .|/    || ||   | \  / |-_.||
+" ||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \  / |  `||
+" ||    `'         || ||         `'    || ||    `'         || ||   | \  / |   ||
+" ||            .===' `===.         .==='.`===.         .===' /==. |  \/  |   ||
+" ||         .=='   \_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \/  |   ||
+" ||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \/  |   ||
+" ||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   ||
+" ||.=='    _-'                                                     `' |  /==.||
+" =='    _-'                        N E O V I M                         \/   `==
+" \   _-'                                                                `-_   /
+"  `''                                                                      ``'
+" END
+let g:dashboard_custom_header = [
+\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+\]
+

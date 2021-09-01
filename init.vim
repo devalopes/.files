@@ -36,7 +36,6 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'tpope/vim-fugitive'
 Plug 'TimUntersberger/neogit'
 Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
@@ -55,8 +54,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'folke/which-key.nvim'
 Plug 'ray-x/lsp_signature.nvim'
-
-" Test plugins
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
@@ -193,14 +190,14 @@ augroup END
 lua <<EOF
 
 -- Testing --
+-- End Testing --
+
 require("indent_blankline").setup {
     char = '│',
     buftype_exclude = {"terminal", "nofile"},
     -- show_current_context = true,
 }
 require("colorizer").setup{}
--- End Testing --
-
 require('nvim-autopairs').setup()
 require'compe'.setup {
   enabled = true;

@@ -69,6 +69,7 @@ let g:onedark_style='darker'
 colorscheme onedark
 " highlight Normal guibg=None
 " highlight ColorColumn guibg=black
+highlight Pmenu guibg=None
 highlight CursorLine guibg=None
 " highlight SignColumn guibg=None
 " highlight LineNr guibg=None guifg=Gray
@@ -103,6 +104,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" Confirms snippet selection currently
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
 
 augroup remove_whitespace

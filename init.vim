@@ -25,6 +25,7 @@ set shortmess+=c
 set noshowcmd
 set noruler
 set clipboard+=unnamedplus
+set autochdir
 
 set wildignore+=*.pyc
 set wildignore+=**/node_modules/*

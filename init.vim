@@ -101,7 +101,7 @@ let g:dashboard_custom_section={
       \ 'description': [' New File                        SPC c n '],
       \ 'command': 'DashboardNewFile' },
   \ 'edit_config': {
-      \ 'description': ['🌎Edit nvim                       SPC v r c'],
+      \ 'description': ['🌎Edit neovim                     SPC v r c'],
       \ 'command': ':e ~/.config/nvim/init.vim' }
   \ }
 

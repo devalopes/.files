@@ -83,7 +83,7 @@ let g:dashboard_default_executive ='telescope'
 
 let g:dashboard_custom_section={
   \ 'saved_session': {
-      \ 'description': [' Last save point                 SPC s l '],
+      \ 'description': [' Last Save Point                 SPC s l '],
       \ 'command': 'SessionLoad' },
   \ 'history': {
       \ 'description': ['⌚History                         SPC f o '],
@@ -101,7 +101,7 @@ let g:dashboard_custom_section={
       \ 'description': [' New File                        SPC c n '],
       \ 'command': 'DashboardNewFile' },
   \ 'edit_config': {
-      \ 'description': ['🌎Edit neovim                     SPC v r c'],
+      \ 'description': ['🌎Edit Neovim                     SPC v r c'],
       \ 'command': ':e ~/.config/nvim/init.vim' }
   \ }
 

@@ -105,6 +105,8 @@ let g:dashboard_custom_section={
       \ 'command': ':e ~/.config/nvim/init.vim' }
   \ }
 
+highlight NvimTreeNormal guibg=None
+highlight NvimTreeEndOfBuffer guibg=None
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__', 'venv' ]
 let g:nvim_tree_gitignore = 1
 let g:nvim_tree_auto_close = 1

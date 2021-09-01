@@ -1,6 +1,9 @@
+# tmux -u -2 new-session -A -s dev
+
 export TMPDIR=$HOME/.tmp/
 export EDITOR=nvim
 export VISUAL=nvim
+export PORT=8080
 export HIGHLIGHT_STYLE=moria
 export PATH=~/.local/bin:$PATH
 

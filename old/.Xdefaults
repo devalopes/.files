@@ -2,11 +2,11 @@
 ! Much config driven from:
 ! http://www.futurile.net/2016/06/14/xterm-setup-and-truetype-font-configuration/
 !
-?*Background: black
-?*Foreground: light gray
+/* ?*Background: black */
+/* ?*Foreground: light gray */
 XTerm*termName: xterm-256color
 !XTerm*faceName: Bitstream Vera Sans Mono ! TrueType font
-XTerm*faceName: Monospace
+XTerm*faceName: Hack Nerd Font Mono
 !XTerm*font: *-fixed-*-*-*-18-* ! Not a TrueType font, disables TrueType
 XTerm*faceSize: 12
 XTerm*locale: UTF-8
@@ -25,3 +25,44 @@ XTerm*rightScrollBar: true
 
 ! Do not scroll when there is a new input e..g tail -f /var/syslog
 XTerm*srollTtyOutput: false
+XTerm*autowrap: true
+
+!! Theme for ARGONAUT
+*.foreground: #fffaf4
+*.background: #0e1019
+*.cursorColor: #ff0018
+
+!! Black
+*.color0: #232323
+*.color8: #444444
+
+!! Red
+*.color1: #ff000f
+*.color9: #ff2740
+
+!! Green
+*.color2: #8ce10b
+*.color10: abe15b
+
+!! Yellow
+*.color3: #ffb900
+*.color11: #ffd242
+
+!! Blue
+*.color4: #008df8
+*.color12: #0092ff
+
+!! Magenta
+*.color5: #6d43a6
+*.color13: #9a5feb
+
+!! Cyan
+*.color6: #00d8eb
+*.color14: #67fff0
+
+!! White
+*.color7: #ffffff
+*.color16: #ffffff
+
+!! Bold, italic, underline
+*.colorBD: #939c9a

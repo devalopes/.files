@@ -78,15 +78,17 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_silent = 1  " do not display the auto-save notification
 
 let g:indentLine_fileTypeExclude = ['dashboard']
+let g:dashboard_disable_statusline = 1
 let g:dashboard_default_executive ='telescope'
 let g:dashboard_custom_shortcut={
 \ 'last_session'       : 'SPC s l',
-\ 'find_history'       : 'SPC f h',
+\ 'find_history'       : 'SPC f o',
 \ 'find_file'          : 'SPC f f',
 \ 'new_file'           : 'SPC c n',
-\ 'change_colorscheme' : 'SPC t c',
+\ 'change_colorscheme' : 'SPC c c',
 \ 'find_word'          : 'SPC f g',
 \ 'book_marks'         : 'SPC f b',
+\ 'Edit config'        : 'SPC vrc',
 \ }
 
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__', 'venv' ]
@@ -148,6 +150,7 @@ nnoremap <leader>t :NvimTreeToggle<CR>
 nnoremap <leader>g :Neogit<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -159,7 +162,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
-nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>cc :DashboardChangeColorscheme<CR>
 
 " Confirms snippet selection currently
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
@@ -289,10 +292,6 @@ local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   buf_set_keymap('n', '<space>j', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<space>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
---  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
---  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.sp.buf.remove_workspace_folder()<CR>', opts)
---  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
---  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -300,8 +299,6 @@ local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   buf_set_keymap('n', 'grn', '<cmd>cn<CR>', opts)
   buf_set_keymap('n', 'grc', '<cmd>ccl<CR>', opts)
   buf_set_keymap('n', '<space>h', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border="single"})<CR>', opts)
--- buf_set_keymap('n', '<space>N', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
--- buf_set_keymap('n', '<space>n', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end

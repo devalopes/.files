@@ -25,7 +25,6 @@ set shortmess+=c
 set noshowcmd
 set noruler
 set clipboard+=unnamedplus
-set autochdir
 
 set wildignore+=*.pyc
 set wildignore+=**/node_modules/*
@@ -57,7 +56,7 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
-
+Plug 'ahmedkhalf/project.nvim'
 call plug#end()
 
 set termguicolors
@@ -100,6 +99,9 @@ let g:dashboard_custom_section={
   \ 'new_file': {
       \ 'description': [' New File                        SPC c n '],
       \ 'command': 'DashboardNewFile' },
+  \ 'projects': {
+      \ 'description': [' Launch Project                  SPC f p '],
+      \ 'command': 'Telescope projects' },
   \ 'edit_config': {
       \ 'description': ['🌎Edit Neovim                     SPC v r c'],
       \ 'command': ':e ~/.config/nvim/init.vim' }
@@ -107,6 +109,9 @@ let g:dashboard_custom_section={
 
 highlight NvimTreeNormal guibg=None
 highlight NvimTreeEndOfBuffer guibg=None
+" Vim Script
+let g:nvim_tree_update_cwd = 1
+let g:nvim_tree_respect_buf_cwd = 1
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__', 'venv' ]
 let g:nvim_tree_gitignore = 1
 let g:nvim_tree_auto_close = 1
@@ -171,6 +176,7 @@ nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fp <cmd>Telescope projects<cr>
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -276,6 +282,10 @@ require('which-key').setup{
         border = "single"
     }
 }
+
+require("project_nvim").setup {
+}
+require("telescope").load_extension('projects')
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",

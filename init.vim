@@ -69,7 +69,7 @@ colorscheme onedark
 highlight Pmenu guibg=None
 highlight CursorLine guibg=None
 highlight TabLineSel guifg=#282c34 guibg=#e06c75
-highlight Visual ctermbg=242 guibg=#e06c75 guifg=#000000 " Remove guifg to have transparency
+highlight Visual ctermbg=242 guibg=#8f353c  " Remove guifg to have transparency
 " highlight SignColumn guibg=None
 " highlight LineNr guibg=None guifg=Gray
 

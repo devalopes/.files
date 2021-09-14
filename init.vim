@@ -68,13 +68,15 @@ set termguicolors
 " let g:onedark_style='darker'
 colorscheme ayu-mirage
 highlight Normal guibg=None
+highlight NormalFloat guibg=None
 " highlight ColorColumn guibg=black
 highlight Pmenu guibg=None
 highlight CursorLine guibg=None
+highlight CursorLineNr guibg=None
 highlight TabLineSel guifg=#282c34 guibg=#6dcbfa
 highlight Visual ctermbg=242 guibg=#2f2b69  " Remove guifg to have transparency
 highlight SignColumn guibg=None
-" highlight LineNr guibg=None guifg=Gray
+highlight LineNr guibg=None
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_silent = 1  " do not display the auto-save notification

@@ -276,7 +276,7 @@ require'lsp_signature'.on_attach(
 
 require('lualine').setup {
   options = {
-    theme = 'ayu_mirage',
+    theme = 'ayu_dark',
     icons_enabled = true,
   }
 }

@@ -57,20 +57,23 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'ahmedkhalf/project.nvim'
+
+Plug 'ggandor/lightspeed.nvim'
+Plug 'Shatur/neovim-ayu'
 call plug#end()
 
 set termguicolors
-let g:onedark_transparent_background = 1
-let g:onedark_disable_toggle_style = 1
-let g:onedark_style='darker'
-colorscheme onedark
-" highlight Normal guibg=None
+" let g:onedark_transparent_background = 1
+" let g:onedark_disable_toggle_style = 1
+" let g:onedark_style='darker'
+colorscheme ayu-mirage
+highlight Normal guibg=None
 " highlight ColorColumn guibg=black
 highlight Pmenu guibg=None
 highlight CursorLine guibg=None
-highlight TabLineSel guifg=#282c34 guibg=#e06c75
-highlight Visual ctermbg=242 guibg=#8f353c  " Remove guifg to have transparency
-" highlight SignColumn guibg=None
+highlight TabLineSel guifg=#282c34 guibg=#6dcbfa
+highlight Visual ctermbg=242 guibg=#2f2b69  " Remove guifg to have transparency
+highlight SignColumn guibg=None
 " highlight LineNr guibg=None guifg=Gray
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -271,7 +274,7 @@ require'lsp_signature'.on_attach(
 
 require('lualine').setup {
   options = {
-    theme = 'onedark',
+    theme = 'ayu_mirage',
     icons_enabled = true,
   }
 }

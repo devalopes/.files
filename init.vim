@@ -162,6 +162,8 @@ let g:nvim_tree_icons = {
 let mapleader=" "
 nnoremap q: <nop>
 nnoremap Q <nop>
+nnoremap <leader>1 :!
+nnoremap <leader>rr :@:<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>

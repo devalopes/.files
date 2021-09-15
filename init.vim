@@ -25,6 +25,8 @@ set shortmess+=c
 set noshowcmd
 set noruler
 set clipboard+=unnamedplus
+set shellcmdflag=-ic  " Source bashrc, makes shell interactive
+set splitbelow
 
 set wildignore+=*.pyc
 set wildignore+=**/node_modules/*
@@ -96,7 +98,7 @@ let g:dashboard_custom_section={
       \ 'description': [' Find File                       SPC f f '],
       \ 'command': 'Telescope find_files' },
   \ 'find_hidden': {
-      \ 'description': ['👓Find Hidden                     SPC f m '],
+      \ 'description': ['👓Find Hidden                     SPC f i '],
       \ 'command': 'Telescope find_files hidden=true' },
   \ 'find_word': {
       \ 'description': [' Live Grep                       SPC f g '],
@@ -162,14 +164,18 @@ let g:nvim_tree_icons = {
 let mapleader=" "
 nnoremap q: <nop>
 nnoremap Q <nop>
-nnoremap <leader>1 :!
+nnoremap m q
+nnoremap q <nop>
+nnoremap <leader>1 :split term://
+nnoremap <leader>9 :split term://python3 " Why 9? Because it looks like a snake.
 nnoremap <leader>rr :@:<CR>
-nnoremap <leader>wq :wq<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :q!<CR>
+nnoremap <leader>fmt <nop>
+nnoremap <leader>wq <CR>:wq<CR>
+nnoremap <leader>w <CR>:w<CR>
+nnoremap <leader>q <CR>:q<CR>
+nnoremap <leader>Q <CR>:q!<CR>
 nnoremap <leader>vrc :e ~/.config/nvim/init.vim<CR>
-tnoremap <Esc> <C-w><CR>
+tnoremap <Esc> <C-\><C-n>
 tnoremap <C-w>n <C-w>N
 
 nnoremap <leader>ft :FloatermToggle<CR>
@@ -178,7 +184,7 @@ nnoremap <leader>t :NvimTreeToggle<CR>
 nnoremap <leader>g :Neogit<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fm <cmd>Telescope find_files hidden=true<cr>
+nnoremap <leader>fi <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -200,6 +206,18 @@ inoremap <silent><expr> <CR> compe#confirm('<CR>')
 augroup remove_whitespace
     autocmd!
     autocmd BufWritePre * %s/\s\+$//e
+augroup END
+
+augroup integrated_terminal
+  autocmd!
+  autocmd TermOpen * setlocal nonumber norelativenumber " remove numbers in term
+  autocmd TermOpen * startinsert
+augroup END
+
+augroup format
+  autocmd!
+  autocmd FileType rust nnoremap <leader>fmt :!cargo fmt<CR>
+  autocmd FileType python nnoremap <leader>fmt :!python3 -m black . && python3 -m isort .<CR>
 augroup END
 
 lua <<EOF
@@ -334,7 +352,6 @@ local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   buf_set_keymap('n', 'grc', '<cmd>ccl<CR>', opts)
   buf_set_keymap('n', '<space>h', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border="single"})<CR>', opts)
   buf_set_keymap('n', '<space>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =

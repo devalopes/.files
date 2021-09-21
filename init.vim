@@ -61,21 +61,21 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'ahmedkhalf/project.nvim'
 
 Plug 'ggandor/lightspeed.nvim'
-Plug 'Shatur/neovim-ayu'
 call plug#end()
 
 set termguicolors
-" let g:onedark_transparent_background = 1
-" let g:onedark_disable_toggle_style = 1
-" let g:onedark_style='darker'
-colorscheme ayu-mirage
-highlight Normal guibg=None
+let g:onedark_transparent_background = 1
+let g:onedark_disable_toggle_style = 1
+let g:onedark_style='darker'
+colorscheme onedark
+" highlight Normal guibg=None
 highlight NormalFloat guibg=None
 " highlight ColorColumn guibg=black
+" highlight NvimTreeNormal guibg=None
 highlight Pmenu guibg=None
 highlight CursorLine guibg=None
 highlight CursorLineNr guibg=None
-highlight TabLineSel guifg=#282c34 guibg=#6dcbfa
+highlight TabLineSel guifg=#282c34 guibg=#e06c75
 highlight Visual ctermbg=242 guibg=#2f2b69  " Remove guifg to have transparency
 highlight SignColumn guibg=None
 highlight LineNr guibg=None
@@ -167,7 +167,7 @@ nnoremap Q <nop>
 nnoremap m q
 nnoremap q <nop>
 nnoremap <leader>1 :split term://
-nnoremap <leader>9 :split term://python3 " Why 9? Because it looks like a snake.
+nnoremap <leader>9 :split term://python3<CR>
 nnoremap <leader>rr :@:<CR>
 nnoremap <leader>fmt <nop>
 nnoremap <leader>wq <CR>:wq<CR>
@@ -296,7 +296,7 @@ require'lsp_signature'.on_attach(
 
 require('lualine').setup {
   options = {
-    theme = 'ayu_dark',
+    theme = 'onedark',
     icons_enabled = true,
   }
 }

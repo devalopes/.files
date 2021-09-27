@@ -35,7 +35,6 @@ set wildignore+=**/.git/*
 call plug#begin('~/.vim/plugged')
 Plug 'glepnir/dashboard-nvim'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'navarasu/onedark.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'TimUntersberger/neogit'
 Plug 'tpope/vim-commentary'
@@ -59,15 +58,15 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'ahmedkhalf/project.nvim'
-
 Plug 'ggandor/lightspeed.nvim'
+Plug 'shaunsingh/nord.nvim'
 call plug#end()
 
 set termguicolors
-let g:onedark_transparent_background = 1
-let g:onedark_disable_toggle_style = 1
-let g:onedark_style='darker'
-colorscheme onedark
+let g:nord_borders = v:true
+let g:nord_disable_background = v:true
+let g:nord_cursorline_transparent = v:true
+colorscheme nord
 " highlight Normal guibg=None
 highlight NormalFloat guibg=None
 " highlight ColorColumn guibg=black
@@ -76,7 +75,7 @@ highlight Pmenu guibg=None
 highlight CursorLine guibg=None
 highlight CursorLineNr guibg=None
 highlight TabLineSel guifg=#282c34 guibg=#e06c75
-highlight Visual ctermbg=242 guibg=#2f2b69  " Remove guifg to have transparency
+" highlight Visual ctermbg=242 guibg=#2f2b69  " Remove guifg to have transparency
 highlight SignColumn guibg=None
 highlight LineNr guibg=None
 
@@ -296,7 +295,7 @@ require'lsp_signature'.on_attach(
 
 require('lualine').setup {
   options = {
-    theme = 'onedark',
+    theme = 'nord',
     icons_enabled = true,
   }
 }

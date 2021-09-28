@@ -60,6 +60,9 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'shaunsingh/nord.nvim'
+
+Plug 'mcchrish/zenbones.nvim'
+Plug 'rktjmp/lush.nvim'
 call plug#end()
 
 set termguicolors
@@ -115,12 +118,9 @@ let g:dashboard_custom_section={
 
 highlight NvimTreeNormal guibg=None
 highlight NvimTreeEndOfBuffer guibg=None
-" Vim Script
-let g:nvim_tree_update_cwd = 1
 let g:nvim_tree_respect_buf_cwd = 1
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__', 'venv' ]
 let g:nvim_tree_gitignore = 1
-let g:nvim_tree_auto_close = 1
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_special_files = {}
 let g:nvim_tree_window_picker_exclude = {
@@ -197,7 +197,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
-nnoremap <silent> <Leader>cc :DashboardChangeColorscheme<CR>
 
 " Confirms snippet selection currently
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
@@ -217,6 +216,11 @@ augroup format
   autocmd!
   autocmd FileType rust nnoremap <leader>fmt :!cargo fmt<CR>
   autocmd FileType python nnoremap <leader>fmt :!python3 -m black . && python3 -m isort .<CR>
+augroup END
+
+augroup coverage
+  autocmd!
+  autocmd FileType python nnoremap <leader>cc :!python3 -m pytest -v --cov=src/ --cov-report=term-missing tests/ .<CR>
 augroup END
 
 lua <<EOF
@@ -292,6 +296,11 @@ require'lsp_signature'.on_attach(
       },
     }
 )
+
+require('nvim-tree').setup{
+    update_cwd = true,
+    auto_close = true,
+}
 
 require('lualine').setup {
   options = {

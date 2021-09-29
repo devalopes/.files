@@ -47,8 +47,8 @@ link() {
 
 kitty() {
 	exists kitty
-	link kitty.conf $HOME/.config/kitty/kitty.conf
-    link kitty-theme.conf $HOME/.config/kitty/theme.conf
+	link kitty/kitty.conf $HOME/.config/kitty/kitty.conf
+    link kitty/selenized_day.conf $HOME/.config/kitty/themes/selenized_day.conf
 	install_success kitty
 }
 

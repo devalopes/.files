@@ -70,15 +70,16 @@ let g:nord_borders = v:true
 let g:nord_disable_background = v:true
 let g:nord_cursorline_transparent = v:true
 colorscheme nord
-" highlight Normal guibg=None
+highlight TelescopeNormal guibg=None
+highlight Normal guibg=None
 highlight NormalFloat guibg=None
-" highlight ColorColumn guibg=black
+highlight ColorColumn guibg=#325b66
 " highlight NvimTreeNormal guibg=None
 highlight Pmenu guibg=None
 highlight CursorLine guibg=None
 highlight CursorLineNr guibg=None
-highlight TabLineSel guifg=#282c34 guibg=#e06c75
-" highlight Visual ctermbg=242 guibg=#2f2b69  " Remove guifg to have transparency
+" highlight TabLineSel guifg=#282c34 guibg=#e06c75
+highlight Visual ctermbg=242 guibg=#325b66  " Remove guifg to have transparency
 highlight SignColumn guibg=None
 highlight LineNr guibg=None
 
@@ -304,7 +305,7 @@ require('nvim-tree').setup{
 
 require('lualine').setup {
   options = {
-    theme = 'nord',
+    theme = 'solarized_dark',
     icons_enabled = true,
   }
 }

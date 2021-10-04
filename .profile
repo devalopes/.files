@@ -5,7 +5,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PORT=8080
 export HIGHLIGHT_STYLE=moria
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:~/Applications/:$PATH
 
 set -o vi
 

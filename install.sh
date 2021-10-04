@@ -54,6 +54,12 @@ kitty() {
 
 
 neovim() {
+	if [[ ! "$(command -v nvim )" ]]
+	then
+		mkdir -pv $HOME/Applications
+		curl -L https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -o $HOME/Applications/nvim
+		chmod u+x $HOME/Applications/nvim
+	fi
 	exists nvim
     # Add Plug if it doesn't exist
 	if [[ ! -f ${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim ]]
@@ -79,6 +85,7 @@ neovim() {
 ranger() {
 	exists ranger
 	link rifle.conf $HOME/.config/ranger/rifle.conf
+    pip install ranger-fm
 	install_success ranger
 }
 
@@ -129,11 +136,11 @@ bashrc() {
     install_success bashrc
 }
 
-install kitty
-install neovim
-install ranger
 install aliases
 install functions
 install profile
 install bashrc
 install gitconfig
+install kitty
+install neovim
+install ranger

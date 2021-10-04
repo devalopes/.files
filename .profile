@@ -6,6 +6,12 @@ export VISUAL=nvim
 export PORT=8080
 export HIGHLIGHT_STYLE=moria
 export PATH=~/.local/bin:~/Applications/:$PATH
+if [[ $(uname -r) =~ [Mm]icrosoft ]]
+    # Running in WSL, export display server
+then
+    export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+    export LIBGL_ALWAYS_INDIRECT=1
+fi
 
 set -o vi
 

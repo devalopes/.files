@@ -70,6 +70,7 @@ let g:nord_borders = v:true
 let g:nord_disable_background = v:true
 let g:nord_cursorline_transparent = v:true
 colorscheme nord
+highlight WhichKeyFloat guibg=None
 highlight TelescopeNormal guibg=None
 highlight Normal guibg=None
 highlight NormalFloat guibg=None
@@ -305,7 +306,8 @@ require('nvim-tree').setup{
 
 require('lualine').setup {
   options = {
-    theme = 'solarized_dark',
+    theme = 'onedark',
+    -- theme = 'solarized_dark',
     icons_enabled = true,
   }
 }

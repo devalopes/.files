@@ -1,4 +1,5 @@
-if [[ "$TERM" != "screen-256color" ]]; then
+if [[ "$TERM" != "screen-256color" && -z "${NVIM_LISTEN_ADDRESS}" ]]; then
+    # Don't run again if already in tmux OR in an nvim interactive shell
     tmux -u -2 new-session -A -s dev
 fi
 
@@ -9,7 +10,7 @@ export PORT=8080
 export HIGHLIGHT_STYLE=moria
 export PATH=~/.local/bin:~/Applications/:$PATH
 if [[ $(uname -r) =~ [Mm]icrosoft ]]
-    # Running in WSL, export display server
+    # Running in WSL (hopefully wsl2) export display server
 then
     export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
     export LIBGL_ALWAYS_INDIRECT=1
@@ -19,6 +20,7 @@ set -o vi
 
 if [[ -f $HOME/.cargo/env ]]
 then
+    # Source cargo env for rustlang
     . "$HOME/.cargo/env"
 fi
 

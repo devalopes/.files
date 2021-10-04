@@ -1,4 +1,6 @@
-tmux -u -2 new-session -A -s dev
+if [[ "$TERM" != "screen-256color" ]]; then
+    tmux -u -2 new-session -A -s dev
+fi
 
 export TMPDIR=$HOME/.tmp/
 export EDITOR=nvim

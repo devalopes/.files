@@ -1,4 +1,4 @@
-# tmux -u -2 new-session -A -s dev
+tmux -u -2 new-session -A -s dev
 
 export TMPDIR=$HOME/.tmp/
 export EDITOR=nvim

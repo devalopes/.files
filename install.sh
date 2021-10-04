@@ -136,11 +136,17 @@ bashrc() {
     install_success bashrc
 }
 
+tmux() {
+    link .tmux.conf $HOME/.tmux.conf
+    install_success tmux
+}
+
 install aliases
 install functions
 install profile
 install bashrc
 install gitconfig
+install tmux
 install kitty
 install neovim
 install ranger

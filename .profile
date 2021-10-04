@@ -1,4 +1,5 @@
-if [[ "$TERM" != "screen-256color" && -z "${NVIM_LISTEN_ADDRESS}" ]]; then
+if [[ "$TERM" != "screen-256color" && -z "${NVIM_LISTEN_ADDRESS}" ]]
+then
     # Don't run again if already in tmux OR in an nvim interactive shell
     tmux -u -2 new-session -A -s dev
 fi

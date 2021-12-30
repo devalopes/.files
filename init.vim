@@ -121,9 +121,8 @@ let g:dashboard_custom_section={
 highlight NvimTreeNormal guibg=None
 highlight NvimTreeEndOfBuffer guibg=None
 let g:nvim_tree_respect_buf_cwd = 1
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__', 'venv' ]
-let g:nvim_tree_gitignore = 1
-let g:nvim_tree_git_hl = 1
+" let g:nvim_tree_gitignore = 1
+" let g:nvim_tree_git_hl = 1
 let g:nvim_tree_special_files = {}
 let g:nvim_tree_window_picker_exclude = {
     \   'buftype': [
@@ -171,10 +170,10 @@ nnoremap <leader>1 :split term://
 nnoremap <leader>9 :split term://python3<CR>
 nnoremap <leader>rr :@:<CR>
 nnoremap <leader>fmt <nop>
-nnoremap <leader>wq <CR>:wq<CR>
-nnoremap <leader>w <CR>:w<CR>
-nnoremap <leader>q <CR>:q<CR>
-nnoremap <leader>Q <CR>:q!<CR>
+nnoremap <leader>wq :wq<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q!<CR>
 nnoremap <leader>vrc :e ~/.config/nvim/init.vim<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-w>n <C-w>N
@@ -302,6 +301,7 @@ require'lsp_signature'.on_attach(
 require('nvim-tree').setup{
     update_cwd = true,
     auto_close = true,
+    ignore_ft_on_setup = {'.git', 'node_modules', '.cache', '__pycache__', 'venv'}
 }
 
 require('lualine').setup {

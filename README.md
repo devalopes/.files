@@ -40,8 +40,6 @@ Stow uses the directory hierarchy for the link target, as such a hierarchy mimic
 │               ├── plugins
 │               │   └── packer.lua
 │               └── settings.lua
-├── README.md
-├── .stow-local-ignore
 ├── tmux
 │   └── .config
 │       └── tmux

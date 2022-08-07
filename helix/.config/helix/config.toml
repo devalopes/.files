@@ -2,7 +2,6 @@
 theme = "nord"
 
 [editor]
-line-number = "relative"
 scrolloff = 5
 rulers = [ 81 ]
 

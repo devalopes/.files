@@ -421,7 +421,7 @@ colors:
   #     program: notify-send
   #     args: ["Hello, World!"]
   #
-  #command: None
+# command: None
 
 #selection:
   # This string contains all characters that are used as separators for
@@ -483,10 +483,11 @@ colors:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+shell:
+  program: /usr/bin/fish
+  args:
+    - -c
+    - "zellij"
 
 # Startup directory
 #

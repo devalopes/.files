@@ -2,7 +2,8 @@
 This repository uses [`GNU Stow`](https://www.gnu.org/software/stow/manual/html_node/index.html) to manage symlinks to all of the above configuration files.
 
 ## How To
-* `cd` into `.files/`
+* `git clone git@github.com:devalopes/.files.git`
+* `cd .files/`
 * `make`
 
 ## Example Structure

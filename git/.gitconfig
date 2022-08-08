@@ -1,0 +1,25 @@
+[user]
+	email = alexjonathanlopes@gmail.com
+	name = Alex Lopes
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = input
+[alias]
+	a = add
+	ap = add --all --patch
+	aa = add --all 
+	b = branch
+	c = commit
+	co = checkout
+	d = diff
+	f = fetch
+	fa = fetch --all
+	l = log
+	ps = push
+	psu = push --set-upstream
+	pl = pull
+	plu = pull upstream
+	r = remote --verbose
+	s = status --short --branch
+

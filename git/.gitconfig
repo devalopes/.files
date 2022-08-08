@@ -5,11 +5,16 @@
 	defaultBranch = main
 [core]
 	autocrlf = input
+[url "https://github.com/"]
+    insteadOf = gh:
+[url "https://gist.github.com/"]
+	insteadOf = gist:
+
 [alias]
 	a = add
 	ap = add --all --patch
 	aa = add --all 
-	b = branch
+	b = branch --verbose
 	c = commit
 	cm = commit -m
 	co = checkout

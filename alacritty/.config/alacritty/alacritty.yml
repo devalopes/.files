@@ -483,11 +483,11 @@ colors:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-shell:
-  program: /usr/bin/fish
-  args:
-    - -c
-    - "zellij --layout strider"
+# shell:
+#   program: /usr/bin/fish
+#   args:
+#     - -c
+#     - "zellij --layout strider"
 
 # Startup directory
 #

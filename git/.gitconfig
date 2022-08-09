@@ -29,3 +29,4 @@
 	r = remote --verbose
 	s = status --short --branch
 	acp = !git add --all && git commit --allow-empty-message -m '' && git push
+	acm = !git add --all && git commit -m

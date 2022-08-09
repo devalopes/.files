@@ -14,22 +14,39 @@ Stow uses the directory hierarchy for the link target, as such a hierarchy mimic
 ├── alacritty
 │   └── .config
 │       └── alacritty
-│           └── alacritty.yml
+│           ├── alacritty.yml
+│           └── nord.yml
+├── bash
+│   └── .bashrc
+├── box
+│   └── .config
+│       ├── my-python-project
+│       ├── python
+│       │   └── docker-compose.yml
+│       └── rust
+│           └── Dockerfile
 ├── fish
 │   └── .config
 │       └── fish
 │           └── config.fish
+├── git
+│   └── .gitconfig
 ├── helix
 │   └── .config
 │       └── helix
-│           └── config.toml
+│           ├── config.toml
+│           ├── hx
+│           └── themes
+│               └── nord.toml
 ├── kitty
 │   └── .config
 │       └── kitty
 │           ├── kitty.conf
-│           ├── kitty-theme.conf
-│           ├── selenized_day.conf
-│           └── selenized_night.conf
+│           └── themes
+│               ├── kitty-theme.conf
+│               ├── nord.conf
+│               ├── selenized_day.conf
+│               └── selenized_night.conf
 ├── makefile
 ├── nvim
 │   └── .config
@@ -41,12 +58,21 @@ Stow uses the directory hierarchy for the link target, as such a hierarchy mimic
 │               ├── plugins
 │               │   └── packer.lua
 │               └── settings.lua
+├── README.md
+├── scripts
+│   └── .local
+│       └── bin
+│           ├── install-helix.sh
+│           ├── install-kitty.sh
+│           ├── install-rust-analyzer.sh
+│           └── install-zellij.sh
+├── .stow-local-ignore
 ├── tmux
 │   └── .config
 │       └── tmux
 │           └── tmux.conf
 └── zellij
     └── .config
-            └── zellij
-                └── config.yaml
+        └── zellij
+            └── config.yaml
 ```

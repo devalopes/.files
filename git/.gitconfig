@@ -28,4 +28,4 @@
 	plu = pull upstream
 	r = remote --verbose
 	s = status --short --branch
-
+	acp = !git add --all && git commit --allow-empty-message -m '' && git push

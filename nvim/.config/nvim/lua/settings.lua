@@ -34,7 +34,6 @@ opt.completeopt = {            -- Completion settings
 opt.showcmd = false            -- Show last command
 opt.ruler = false              -- Don't show cursor position in status line
 opt.clipboard = 'unnamedplus'  -- Use system clipboard
-opt.shellcmdflag = '-ic'       -- Source bashrc, make shell interactive
 opt.splitbelow = true          -- Horizontal splits below instead of above 
 opt.splitright = true          -- Vertical splits right instead of left
 opt.wildignore = {             -- Ignore file patterns in menu
@@ -46,11 +45,12 @@ opt.wildignore = {             -- Ignore file patterns in menu
 opt.termguicolors = true       -- Enable true color support
 opt.title = true               -- Set window title
 opt.joinspaces = false         -- Joining does not add extra space chars
+opt.shortmess:append 'sI'       -- Remove 'intro' message from nvim
 
 
 -- -- Remove color column marker for selected filetypes
 cmd [[
-    autocmd FileType text,markdown,html,xhtml,javascript,json setlocal cc=0
+    autocmd FileType text,markdown,html,xhtml,xml,yaml,toml,javascript,json setlocal cc=0
 ]]
 
 -- 2 spaces for selected filetypes
@@ -58,3 +58,12 @@ cmd [[
       autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 ]]
 
+
+-- Terminal visual tweaks:
+--- enter insert mode when switching to terminal
+--- close terminal buffer on process exit
+cmd [[
+    autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
+    autocmd TermOpen * startinsert
+    autocmd BufLeave term://* stopinsert
+]]

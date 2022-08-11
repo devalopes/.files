@@ -1,4 +1,5 @@
 require('settings')
 require('keymaps')
 require('colors')
+require('package_manager')
 require('plugins')

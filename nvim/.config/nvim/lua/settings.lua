@@ -2,6 +2,7 @@
 -- Neovim settings
 --------------------------------------------------------------------------------
 local opt = vim.opt
+local cmd = vim.cmd
 
 opt.number = true              -- Set line numbers
 opt.relativenumber = false     -- Set relative line numbering
@@ -47,8 +48,10 @@ opt.title = true               -- Set window title
 opt.joinspaces = false         -- Joining does not add extra space chars
 
 
--- Remove color column marker for selected filetypes
-cmd [[autocmd FileType text,markdown,html,xhtml,javascript,json setlocal cc=0]]
+-- -- Remove color column marker for selected filetypes
+cmd [[
+    autocmd FileType text,markdown,html,xhtml,javascript,json setlocal cc=0
+]]
 
 -- 2 spaces for selected filetypes
 cmd [[

@@ -3,6 +3,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  vim.cmd [[packadd packer.nvim]]
 end
 
 -- Changes to this file should re-run :PackerCompile
@@ -18,9 +19,9 @@ return require('packer').startup(function(use)
       use 'shaunsingh/nord.nvim'
       use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   
+      -- Automaticallyset up configuration after cloning packer.nvim
+      -- Keep this at the end after all plugins
     if packer_bootstrap then
-        -- Automatically set up configuration after cloning packer.nvim
-        -- Keep this at the end after all plugins
       require('packer').sync()
     end
   end)

@@ -1,0 +1,6 @@
+require('plugins/nvim-tree')
+require('plugins/nvim-treesitter')
+require('plugins/lualine')
+require('plugins/nord')
+-- require('plugins/dashboard')
+require('plugins/auto-save')

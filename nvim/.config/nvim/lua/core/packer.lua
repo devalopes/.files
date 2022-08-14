@@ -7,7 +7,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Changes to this file should re-run :PackerCompile
-vim.cmd([[  
+vim.cmd([[
       augroup packer_user_config
       autocmd!
       autocmd BufWritePost packer.lua source <afile> | PackerCompile
@@ -16,9 +16,26 @@ vim.cmd([[
 
 return require('packer').startup(function(use)
       use 'wbthomason/packer.nvim' -- Packer can manage itself
-      use 'shaunsingh/nord.nvim'
+
+      use 'shaunsingh/nord.nvim' -- Colorscheme
+
       use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  
+
+      use {
+          'kyazdani42/nvim-tree.lua',
+          requires = {'kyazdani42/nvim-web-devicons', opt = true }
+      }
+
+      use {
+          'nvim-lualine/lualine.nvim',
+          requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+      }
+
+      use {'glepnir/dashboard-nvim'}
+
+      use {'Pocco81/auto-save.nvim'}
+
+
       -- Automaticallyset up configuration after cloning packer.nvim
       -- Keep this at the end after all plugins
     if packer_bootstrap then

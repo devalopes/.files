@@ -13,7 +13,7 @@
 [alias]
 	a = add
 	ap = add --all --patch
-	aa = add --all 
+	aa = add --all
 	b = branch --verbose
 	c = commit
 	cm = commit -m

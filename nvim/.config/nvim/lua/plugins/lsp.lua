@@ -106,7 +106,6 @@ local function goto_definition(split_cmd)
   local api = vim.api
 
   local handler = function(_, result, ctx)
-    vim.notify(tostring(result[1]), 3)
     if result == nil or vim.tbl_isempty(result) then
       local _ = log.info() and log.info(ctx.method, "No location found")
       return nil
@@ -117,7 +116,7 @@ local function goto_definition(split_cmd)
     end
 
     if vim.tbl_islist(result) then
-      util.jump_to_location(result[1], "utf-8")
+      util.jump_to_location(result[1], "utf-8", true)
 
       if #result > 1 then
         util.set_qflist(util.locations_to_items(result))
@@ -125,7 +124,7 @@ local function goto_definition(split_cmd)
         api.nvim_command("wincmd p")
       end
     else
-      util.jump_to_location(result, "utf-8")
+      util.jump_to_location(result, "utf-8", true)
     end
   end
 

@@ -1,3 +1,13 @@
+-- Set `:LspInfo` border
+local win = require('lspconfig.ui.windows')
+local _default_opts = win.default_opts
+win.default_opts = function(options)
+  local opts = _default_opts(options)
+  opts.border = 'rounded'
+  return opts
+end
+--
+
 local lsp = require('lspconfig')
 
 -- Mappings.
@@ -58,7 +68,10 @@ lsp.tsserver.setup{
   on_attach = on_attach,
   capabilities = capabilities
 }
-
+lsp["lua-language-server"].setup{
+  on_attach = on_attach,
+  capabilities = capabilities
+}
 require("rust-tools").setup{
   server = {
     on_attach = on_attach,

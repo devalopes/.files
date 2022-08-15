@@ -36,32 +36,18 @@ db.custom_header = {
 -- }
 
 local home = os.getenv('HOME') or "~"
-
 db.custom_center = {
-  {icon = '  ',
-  desc = 'Recently latest session                  ',
-  shortcut = 'SPC s l',
-  action ='SessionLoad'},
-  {icon = '  ',
-  desc = 'Recently opened files                   ',
-  action =  'DashboardFindHistory',
-  shortcut = 'SPC f h'},
-  {icon = '  ',
-  desc = 'Find  File                              ',
-  action = 'Telescope find_files find_command=rg,--hidden,--files',
-  shortcut = 'SPC f f'},
-  {icon = '  ',
-  desc ='File Browser                            ',
-  action =  'Telescope file_browser',
-  shortcut = 'SPC f b'},
-  {icon = '  ',
-  desc = 'Find  word                              ',
-  action = 'Telescope live_grep',
-  shortcut = 'SPC f w'},
-  {icon = '  ',
-  desc = 'Open Personal dotfiles                  ',
-  action = 'Telescope dotfiles path=' .. home ..'/.files/nvim/.config/nvim/lua',
-  shortcut = 'SPC f d'},
+  { icon = '  ', desc = 'Find History                            ', shortcut = 'SPC f o', action ='Telescope oldfiles' },
+  { icon = '  ', desc = 'Find Files                              ', action = 'Telescope find_files hidden=true', shortcut = 'SPC f f' },
+  { icon = '  ', desc = 'Find Project                            ', action =  'Telescope projects', shortcut = 'SPC f p' },
+  { icon = '  ', desc = 'Find Word                               ', action = 'Telescope live_grep', shortcut = 'SPC f g' },
+  { icon = '✉  ', desc = 'Git                                     ', action = 'Neogit', shortcut = 'SPC g  ' },
+  { icon = '☸  ', desc = 'Git Branches                            ', action = 'Telescope git_branches', shortcut = '       '},
+  { icon = '☉  ', desc = 'Git Commits                             ', action = 'Telescope git_commits', shortcut = '       '},
+  { icon = '❂  ', desc = 'Git Stash                               ', action = 'Telescope git_stash', shortcut = '       '},
+  { icon = '☢  ', desc = 'Lsp Installer                           ', action = 'Mason', shortcut = 'SPC m  '},
+  { icon = '✎  ', desc = 'New File                                ', action = 'DashboardNewFile', shortcut = 'SPC f n' },
+  { icon = '⚠  ', desc = 'Help                                    ', action = 'Telescope help_tags', shortcut = 'SPC f h'},
 }
 
 local time = os.date("*t") or 0
@@ -81,7 +67,7 @@ local host = os.getenv("HOSTNAME") or ""
 db.custom_footer = {
   "",
   greeting,
-  os.date("%A, %B %m %Y"),
-  "",
   "[".. user .. "@" .. host .. "]",
+  "",
+  os.date("%A, %B %m %Y"),
 }

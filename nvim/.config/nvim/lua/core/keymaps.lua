@@ -27,21 +27,21 @@ map('n', '<leader>g', ':Neogit<CR>', default_opts)
 
 -- Telescope
 map('n', '<leader>ff', ':Telescope find_files<CR>', default_opts)
-map('n', '<leader>fh', ':Telescope find_files hidden=true<CR>', default_opts)
-map('n', '<leader>f?', ':Telescope help_tags<CR>', default_opts)
+map('n', '<leader>fd', ':Telescope find_files hidden=true<CR>', default_opts)
+map('n', '<leader>fh', ':Telescope help_tags<CR>', default_opts)
 map('n', '<leader>fg', ':Telescope live_grep<CR>', default_opts)
 map('n', '<leader>fb', ':Telescope buffers<CR>', default_opts)
 map('n', '<leader>fp', ':Telescope projects<CR>', default_opts)
 map('n', '<leader>fo', ':Telescope oldfiles<CR>', default_opts)
 
 -- Mason
-map('n', '<leader>fm', ':Mason<CR>', default_opts)
+map('n', '<leader>m', ':Mason<CR>', default_opts)
 
 -- Code Actions
-map('n', '<leader>fx', ':CodeActionMenu<CR>', default_opts)
+map('n', '<C-a>', ':CodeActionMenu<CR>', default_opts)
 
 -- Dashboard
 map('n', '<leader>fn', ':DashboardNewFile<CR>', default_opts)
-map('n', '<leader>ss', ':SessionSave<CR>', default_opts)
-map('n', '<leader>sl', ':SessionLoad<CR>', default_opts)
+-- map('n', '<leader>ss', ':SessionSave<CR>', default_opts)
+-- map('n', '<leader>sl', ':SessionLoad<CR>', default_opts)
 

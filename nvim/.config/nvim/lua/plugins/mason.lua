@@ -1,4 +1,9 @@
-require("mason").setup()
+require("mason").setup{
+  ui = {
+    border = "rounded"
+  }
+}
+
 require("mason-lspconfig").setup{
     -- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "sumneko_lua" }
     -- This setting has no relation with the `automatic_installation` setting.
@@ -12,5 +17,4 @@ require("mason-lspconfig").setup{
     --   - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
     --       Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
   automatic_installation = false,
-  border = "single"
 }

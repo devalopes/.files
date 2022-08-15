@@ -1,13 +1,22 @@
 local cmd = vim.cmd
 
--- Auto save on insert leave, focus lost (nvim), bufleave
+-- Auto save on various events
 -- Alternatively can use CursorHold & CursorHoldI
+--
 cmd [[
   augroup auto_save
-    autocmd InsertLeave <buffer> if &modified | update
-    autocmd FocusLost <buffer> if &modified | update
-    autocmd BufLeave <buffer> if &modified | update
+    autocmd!
+    autocmd InsertLeave * call AutoSave()
+    autocmd FocusLost * call AutoSave()
+    autocmd BufLeave * call AutoSave()
+    autocmd BufHidden * call AutoSave()
   augroup END
+
+  function AutoSave()
+    if (bufname() != "" && empty(&buftype) && &modified && &readonly == 0)
+      silent update
+    endif
+  endfunction
 ]]
 
 -- -- Remove color column marker for selected filetypes
@@ -25,6 +34,7 @@ cmd [[
 --- close terminal buffer on process exit
 cmd [[
   augroup empty_terminal
+    autocmd!
     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
     autocmd TermOpen * startinsert
     autocmd BufLeave term://* stopinsert

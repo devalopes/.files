@@ -45,7 +45,7 @@ db.custom_center = {
   { icon = '☸  ', desc = 'Git Branches                            ', action = 'Telescope git_branches', shortcut = '       '},
   { icon = '☉  ', desc = 'Git Commits                             ', action = 'Telescope git_commits', shortcut = '       '},
   { icon = '❂  ', desc = 'Git Stash                               ', action = 'Telescope git_stash', shortcut = '       '},
-  { icon = '☢  ', desc = 'Lsp Installer                           ', action = 'Mason', shortcut = 'SPC m  '},
+  { icon = '☢  ', desc = 'Lsp Install                             ', action = 'Mason', shortcut = 'SPC m  '},
   { icon = '✎  ', desc = 'New File                                ', action = 'DashboardNewFile', shortcut = 'SPC f n' },
   { icon = '⚠  ', desc = 'Help                                    ', action = 'Telescope help_tags', shortcut = 'SPC f h'},
 }

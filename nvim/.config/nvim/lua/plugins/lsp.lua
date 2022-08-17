@@ -9,11 +9,23 @@ end
 --
 
 local lsp = require('lspconfig')
+-- Global diagnostic config
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+  float = {
+    border = 'rounded'
+  }
+})
+
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+-- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '\\', vim.diagnostic.setloclist, opts)
@@ -26,22 +38,21 @@ local on_attach = function(client, bufnr)
 
   -- Show line diagnostics automatically in hover window
   -- note: `vim.o.updatetime` setting is global and should be set only once
-  -- vim.o.updatetime = 100
-  -- vim.api.nvim_create_autocmd("CursorHold", {
-  --   buffer = bufnr,
-  --   callback = function()
-  --     local opts = {
-  --       focusable = false,
-  --       close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-  --       border = 'rounded',
-  --       -- source = 'always',
-  --       prefix = '',
-  --       scope = 'cursor', -- line
-  --     }
-  --     vim.diagnostic.open_float(nil, opts)
-  --   end
-  -- })
-  --
+  vim.o.updatetime = 100
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'rounded',
+        -- source = 'always',
+        prefix = '',
+        scope = 'cursor', -- line
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
 
   --
   -- Mappings.
@@ -51,7 +62,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<leader>h', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
@@ -104,15 +115,6 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- Global diagnostic config
-vim.diagnostic.config({
-  virtual_text = false,
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = false,
-})
-
 
 -- nil if current buffer
 local function bufwinid(bufnr)
@@ -159,3 +161,6 @@ local function goto_definition(split_cmd)
 end
 
 vim.lsp.handlers["textDocument/definition"] = goto_definition('vsplit')
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})

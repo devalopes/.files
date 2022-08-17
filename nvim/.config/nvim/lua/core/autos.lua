@@ -37,7 +37,7 @@ cmd [[
     autocmd!
     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
     autocmd TermOpen * startinsert
-    autocmd BufLeave term://* stopinsert
+    autocmd BufLeave * if &buftype == 'terminal' | stopinsert
   augroup END
 ]]
 

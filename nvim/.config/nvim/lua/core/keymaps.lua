@@ -13,10 +13,13 @@ map('n', '<leader>w', '<Esc>:update<CR>', default_opts)
 map('n', '<leader>wq', '<Esc>:update | q<CR>', default_opts)
 map('n', '<leader>q', '<Esc>:q<CR>', default_opts)
 map('n', '<leader>Q', '<Esc>:q!<CR>', default_opts)
+map('n', '<C-w>x', '<Cmd>exit<CR>', default_opts)
 
 -- Terminal
-map('n', '<C-t>', ':split |:resize 10| terminal<CR>', default_opts)
+map('n', '<C-t>', ':10split|terminal<CR>', default_opts)
+map('t', '<C-t>', [[<C-\><C-n>:vsplit|terminal<CR>]], default_opts)
 map('t', '<C-w>t', [[<C-\><C-n>]], default_opts)
+map('t', '<C-w>x', '<Cmd>exit<CR>', default_opts)
 map('n', '<leader>rr', '@:', default_opts)
 
 -- NvimTree
@@ -39,6 +42,10 @@ map('n', '<leader>m', ':Mason<CR>', default_opts)
 
 -- Code Actions
 map('n', '<C-a>', ':CodeActionMenu<CR>', default_opts)
+
+-- Quick Fix
+map('n', '<C-o>', ':copen<CR>', default_opts)
+map('n', '<C-c>', ':cclose | lclose<CR>', default_opts) -- Close quick fix *or* loc list
 
 -- Dashboard
 map('n', '<leader>fn', ':DashboardNewFile<CR>', default_opts)

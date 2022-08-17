@@ -9,10 +9,9 @@ map('n', 'm', 'q', default_opts)
 map('n', 'q', '<nop>', default_opts)
 
 -- Movement
-map('n', '<leader>w', '<Esc>:update<CR>', default_opts)
-map('n', '<leader>wq', '<Esc>:update | q<CR>', default_opts)
-map('n', '<leader>q', '<Esc>:q<CR>', default_opts)
-map('n', '<leader>Q', '<Esc>:q!<CR>', default_opts)
+map('n', '<C-w>w', '<Esc>:update<CR>', default_opts)
+map('n', '<C-w>wq', '<Esc>:update | q<CR>', default_opts)
+map('n', '<C-w>Q', '<Esc>:q!<CR>', default_opts)
 map('n', '<C-w>x', '<Cmd>exit<CR>', default_opts)
 
 -- Terminal

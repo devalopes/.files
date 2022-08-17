@@ -42,7 +42,7 @@ local on_attach = function(client, bufnr)
   --   end
   -- })
   --
-  
+
   --
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -157,4 +157,5 @@ local function goto_definition(split_cmd)
 
   return handler
 end
+
 vim.lsp.handlers["textDocument/definition"] = goto_definition('vsplit')

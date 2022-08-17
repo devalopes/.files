@@ -44,4 +44,3 @@ map('n', '<C-a>', ':CodeActionMenu<CR>', default_opts)
 map('n', '<leader>fn', ':DashboardNewFile<CR>', default_opts)
 -- map('n', '<leader>ss', ':SessionSave<CR>', default_opts)
 -- map('n', '<leader>sl', ':SessionLoad<CR>', default_opts)
-

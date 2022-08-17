@@ -42,7 +42,7 @@ map('n', '<leader>m', ':Mason<CR>', default_opts)
 -- Code Actions
 map('n', '<C-a>', ':CodeActionMenu<CR>', default_opts)
 
--- Quick Fix
+-- Quick Fix (<C-q> Telescope send to quickfix)
 map('n', '<C-o>', ':copen<CR>', default_opts)
 map('n', '<C-c>', ':cclose | lclose<CR>', default_opts) -- Close quick fix *or* loc list
 

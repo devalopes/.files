@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
   }
   use { 'ahmedkhalf/project.nvim' }
   use { 'ggandor/leap.nvim' }
+  use { 'kevinhwang91/nvim-bqf', ft = "qf"}
 
   -- Git integration
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }

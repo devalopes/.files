@@ -69,7 +69,7 @@ elseif (time.hour >= 18 or time.hour < 6) then
 end
 
 local user = os.getenv("USER") or ""
-local host = os.getenv("HOSTNAME") or ""
+local host = os.getenv("HOSTNAME") or os.getenv("NAME") or ""
 
 db.custom_footer = {
   "",

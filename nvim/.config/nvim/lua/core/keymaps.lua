@@ -10,18 +10,24 @@ map('n', 'q', '<nop>', default_opts)
 
 -- Movement
 map('n', '<C-q>', '<Cmd>exit<CR>', default_opts)
-map('n', '<C-w>w', '<Esc>:update<CR>', default_opts)
 map('n', '<C-w>q', '<Cmd>exit<CR>', default_opts)
-map('n', '<C-w>Q', '<Esc>:q!<CR>', default_opts)
 map('n', '<C-w>x', '<Cmd>exit<CR>', default_opts)
+map('n', '<C-w><C-w>', '<nop>', default_opts)
+map('n', '<C-w>w', '<Esc>:w<CR>', default_opts)
+map('n', '<C-w><C-w>', '<Esc>:w<CR>', default_opts)
+map('n', '<C-w>Q', '<Esc>:q!<CR>', default_opts)
 
 -- Terminal
 map('n', '<C-t>', ':10split|terminal<CR>', default_opts)
 map('t', '<C-t>', [[<C-\><C-n>:vsplit|terminal<CR>]], default_opts)
-map('t', '<C-w>t', [[<C-\><C-n>]], default_opts)
 map('t', '<C-w>n', [[<C-\><C-n>]], default_opts)
 map('t', '<C-q>', '<Cmd>exit<CR>', default_opts)
+map('t', '<C-w>q', '<Cmd>exit<CR>', default_opts)
 map('t', '<C-w>x', '<Cmd>exit<CR>', default_opts)
+map('t', '<C-w>h', '<Cmd>wincmd h<CR>', default_opts)
+map('t', '<C-w>j', '<Cmd>wincmd j<CR>', default_opts)
+map('t', '<C-w>k', '<Cmd>wincmd k<CR>', default_opts)
+map('t', '<C-w>l', '<Cmd>wincmd l<CR>', default_opts)
 map('n', '<leader>rr', '@:', default_opts)
 
 -- NvimTree

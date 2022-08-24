@@ -14,7 +14,7 @@ cmd [[
 
   function AutoSave()
     if (bufname() != "" && empty(&buftype) && &modified && &readonly == 0)
-      silent update
+      silent write
     endif
   endfunction
 ]]

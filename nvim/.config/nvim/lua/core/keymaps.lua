@@ -17,6 +17,10 @@ map('n', '<C-w>w', '<Esc>:w<CR>', default_opts)
 map('n', '<C-w><C-w>', '<Esc>:w<CR>', default_opts)
 map('n', '<C-w>Q', '<Esc>:q!<CR>', default_opts)
 
+-- Maximize/Minimize
+map('n', '<C-w>M', [[<Cmd>resize|vertical resize<CR>]], default_opts)
+map('n', '<C-w>m', [[<C-w>=]], default_opts)
+
 -- Terminal
 map('n', '<C-t>', ':10split|terminal<CR>', default_opts)
 map('t', '<C-t>', [[<C-\><C-n>:vsplit|terminal<CR>]], default_opts)

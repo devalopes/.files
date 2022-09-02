@@ -25,7 +25,7 @@ vim.diagnostic.config({
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
--- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<C-s>', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '\\', vim.diagnostic.setloclist, opts)
@@ -38,22 +38,21 @@ local on_attach = function(client, bufnr)
 
   -- Show line diagnostics automatically in hover window
   -- note: `vim.o.updatetime` setting is global and should be set only once
-  vim.o.updatetime = 100
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function()
-      local opts = {
-        focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = 'rounded',
-        -- source = 'always',
-        prefix = '',
-        scope = 'cursor', -- line
-      }
-      vim.diagnostic.open_float(nil, opts)
-    end
-  })
-
+  -- vim.o.updatetime = 100
+  -- vim.api.nvim_create_autocmd("CursorHold", {
+  --   buffer = bufnr,
+  --   callback = function()
+  --     local opts = {
+  --       focusable = false,
+  --       close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+  --       border = 'rounded',
+  --       -- source = 'always',
+  --       prefix = '',
+  --       scope = 'cursor', -- line
+  --     }
+  --     vim.lsp.buf.hover(nil, opts)
+  --   end
+  -- })
   --
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -61,9 +60,10 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<C-space>', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<C-y>', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)

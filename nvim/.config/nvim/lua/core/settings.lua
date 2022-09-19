@@ -4,7 +4,7 @@
 local opt = vim.opt
 
 opt.number = true -- Set line numbers
-opt.relativenumber = false -- Set relative line numbering
+opt.relativenumber = true -- Set relative line numbering
 opt.cursorline = true -- Set cursor line
 opt.tabstop = 4 -- Number of spaces a tab is rendered as
 opt.softtabstop = 4 -- Number of spaces the cursor moves when pressing <Tab>

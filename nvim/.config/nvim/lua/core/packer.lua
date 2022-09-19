@@ -30,7 +30,6 @@ return require('packer').startup(function(use)
     requires = { 'nvim-lua/plenary.nvim' }
   }
   use { 'ahmedkhalf/project.nvim' }
-  use { 'ggandor/leap.nvim' }
   use { 'kevinhwang91/nvim-bqf', ft = "qf"}
 
   -- Git integration
@@ -39,6 +38,7 @@ return require('packer').startup(function(use)
 
   -- Programming
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter-context' }
   use { 'numToStr/Comment.nvim' }
   use { 'windwp/nvim-autopairs' }
   use { 'lukas-reineke/indent-blankline.nvim' }

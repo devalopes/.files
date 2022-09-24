@@ -28,7 +28,7 @@ if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
 
-cmd hx && EDITOR=hx
+# cmd hx && EDITOR=hx
 cmd nvim && EDITOR=nvim && alias vi="nvim -u NONE"
 # cmd fish && fish
 

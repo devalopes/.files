@@ -29,7 +29,7 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 # cmd hx && EDITOR=hx
-cmd nvim && EDITOR=nvim && alias vi="nvim -u NONE"
+cmd nvim && EDITOR=nvim && alias vi="nvim -u $HOME/.files/nvim/.config/nvim-tiny/init.lua --noplugin"
 # cmd fish && fish
 
 alias ls="ls --color=auto"

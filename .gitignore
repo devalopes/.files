@@ -1,2 +1,8 @@
 # Packer compiled output
 nvim/.config/nvim/plugin
+
+# Ignore all files in local bin which are not install scripts
+scripts/.local/bin/*
+!scripts/.local/bin/install-*
+
+fonts/.local/share/fonts/.uuid

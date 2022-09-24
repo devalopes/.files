@@ -5,8 +5,8 @@ case $- in
 esac
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+if [ -f "/etc/bashrc" ]; then
+	. "/etc/bashrc"
 fi
 
 # User specific environment
@@ -24,7 +24,7 @@ cmd()
 set -o vi
 
 # Source cargo if installed
-if [ -f $HOME/.cargo/env ]; then
+if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
 

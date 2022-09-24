@@ -15,14 +15,14 @@ return require('packer').startup(function(use)
   use 'Shatur/neovim-ayu'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
   use 'norcalli/nvim-colorizer.lua'
 
   -- Navigation
   use {
     'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
   use { 'glepnir/dashboard-nvim' }
   use {

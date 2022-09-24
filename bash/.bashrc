@@ -1,5 +1,3 @@
-# .bashrc
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -18,16 +16,22 @@ then
 fi
 export PATH
 
+cmd()
+{
+  command -v "$1" >/dev/null 2>&1
+}
+
 set -o vi
 
+# Source cargo if installed
 if [ -f $HOME/.cargo/env ]; then
 	. "$HOME/.cargo/env"
 fi
 
-if [ -x $HOME/.local/bin/hx ]; then
-	EDITOR=hx
-fi
+cmd hx && EDITOR=hx
+cmd nvim && EDITOR=nvim
+cmd fish && fish
 
-if [ -x /usr/bin/fish ]; then
-	fish
-fi
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias la="ls -la"

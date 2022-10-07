@@ -68,6 +68,7 @@ return require('packer').startup(function(use)
   use { 'folke/which-key.nvim' }
   use { 'j-hui/fidget.nvim' }
   use { 'alvarosevilla95/luatab.nvim', requires = 'kyazdani42/nvim-web-devicons' }
+  use { 'lewis6991/impatient.nvim' }
 
 
   -- Automaticallyset up configuration after cloning packer.nvim

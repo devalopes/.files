@@ -1,3 +1,4 @@
+require('impatient')
 require('plugins/nvim-tree')
 require('plugins/nvim-treesitter')
 require('plugins/lualine')

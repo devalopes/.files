@@ -70,7 +70,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>fmt', vim.lsp.buf.formatting, bufopts)
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lsp.pyright.setup {
   on_attach = on_attach,

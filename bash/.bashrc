@@ -18,6 +18,7 @@ export PATH
 
 cmd()
 {
+  # Command exists and is executable
   command -v "$1" >/dev/null 2>&1
 }
 

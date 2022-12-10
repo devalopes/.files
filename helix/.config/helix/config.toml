@@ -22,3 +22,22 @@ render = true
 [editor.lsp]
 display-messages = true
 
+# Much needed vim-like mapping
+[keys.normal]
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+
+esc = ["collapse_selection", "keep_primary_selection"]
+i = ["insert_mode", "collapse_selection"]
+a = ["append_mode", "collapse_selection"]
+u = ["undo", "collapse_selection"]
+
+[keys.insert]
+esc = ["collapse_selection", "normal_mode"]
+
+[keys.select]
+"{" = ["extend_to_line_bounds", "goto_prev_paragraph"]
+"}" = ["extend_to_line_bounds", "goto_next_paragraph"]
+
+# Escape the madness! No more fighting with the cursor! Or with multiple cursors!
+esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]

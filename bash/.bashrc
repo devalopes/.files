@@ -44,3 +44,4 @@ cmd btm && alias top="btm"
 cmd lazygit && alias lg="lazygit"
 cmd zoxide && eval "$(zoxide init bash)"
 cmd starship && eval "$(starship init bash)"
+cmd zellij && [ -z "${ZELLIJ}" ] && zellij

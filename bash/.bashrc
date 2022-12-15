@@ -24,10 +24,9 @@ cmd()
 
 set -o vi
 
-# Source cargo if installed
-if [ -f "$HOME/.cargo/env" ]; then
-	. "$HOME/.cargo/env"
-fi
+[ -f ~/.cargo/env ] && source ~/.cargo/env
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 
 alias ls="ls --color=auto"
 alias ll="ls -l"

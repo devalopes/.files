@@ -26,7 +26,8 @@ set -o vi
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
+[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
+[ -s "$HOME/.nvm/bash_completion" ] && source "$HOME/.nvm/bash_completion"
 
 alias ls="ls --color=auto"
 alias ll="ls -l"
@@ -43,4 +44,5 @@ cmd btm && alias top="btm"
 # cmd lazygit && alias lg="lazygit"
 # cmd zoxide && eval "$(zoxide init bash)"
 cmd starship && eval "$(starship init bash)"
-# cmd zellij && [ -z "${ZELLIJ}" ] && zellij
+# cmd zellij && [ -z "${ZELLIJ}" ] && zellij 
+cmd pyenv || export PATH="$HOME/.pyenv/bin:$PATH" && eval "$(pyenv init -)"

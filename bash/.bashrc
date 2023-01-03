@@ -45,4 +45,4 @@ cmd btm && alias top="btm"
 # cmd zoxide && eval "$(zoxide init bash)"
 cmd starship && eval "$(starship init bash)"
 # cmd zellij && [ -z "${ZELLIJ}" ] && zellij 
-cmd pyenv || export PATH="$HOME/.pyenv/bin:$PATH" && eval "$(pyenv init -)"
+cmd pyenv && export PATH="$HOME/.pyenv/bin:$PATH" && eval "$(pyenv init -)"

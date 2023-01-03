@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 if [ ! -x ~/.local/bin/kitty ]; then
+  mkdir -p ~/.local/share/applications
   curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
   # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
   # your system-wide PATH)
